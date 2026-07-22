@@ -4,19 +4,24 @@
 
 A complete product ready to launch as your own SaaS: branded marketing site, member / farmer / admin dashboards, Comgate payments, Cloudinary media, and eco positioning (10% of profits → tree planting).
 
-## Live preview (local)
+**Sale kit repo:** [github.com/Zirvey/PlantUp-SaaS](https://github.com/Zirvey/PlantUp-SaaS)  
+**Product source:** [github.com/Zirvey/PlantUp](https://github.com/Zirvey/PlantUp)
+
+## Live preview
+
+| Page | Link |
+|------|------|
+| **Sales deck** | [zirvey.github.io/PlantUp-SaaS](https://zirvey.github.io/PlantUp-SaaS/) |
+| **Screen hub** | [/demo/](https://zirvey.github.io/PlantUp-SaaS/demo/) |
+| **Product UI** | [/app/](https://zirvey.github.io/PlantUp-SaaS/app/) — homepage, auth, dashboards, checkout |
+
+### Local preview
 
 ```bash
 cd "/Users/temirlankakishev/Project/PlantUp SaaS For Sale"
 python3 -m http.server 8080
 # open http://localhost:8080
 ```
-
-| Page | Path |
-|------|------|
-| **Sales deck** | [`index.html`](./index.html) |
-| **Screen hub** | [`demo/`](./demo/) |
-| **Product UI** | [`app/`](./app/) — built frontend (homepage, auth, dashboards, checkout) |
 
 ## Product screenshots
 
@@ -74,10 +79,17 @@ See [`OFFER_TEMPLATE.md`](./OFFER_TEMPLATE.md) for a Russian commercial proposal
 | Media | Cloudinary |
 | Deploy | Vercel + Railway |
 
-## Source repository
+## Package layout
 
-Product source: [github.com/Zirvey/PlantUp](https://github.com/Zirvey/PlantUp)  
-(Full private handoff on purchase if needed.)
+```
+├── index.html              # Sales deck
+├── demo/                   # Screen hub
+├── app/                    # Built frontend demo (relative asset paths)
+├── assets/                 # Deck CSS/JS + screenshots
+├── docs/                   # HOW_IT_WORKS, PRODUCT
+├── OFFER_TEMPLATE.md       # Commercial proposal (RU)
+└── scripts/sync-app.sh     # Rebuild app/ from PlantUp source
+```
 
 ## Contact
 

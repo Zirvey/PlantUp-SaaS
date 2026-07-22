@@ -53,8 +53,9 @@
 
 ## Live demo
 
-- Sales kit: локальный `index.html` / GitHub Pages (после публикации)
-- Product UI: папка `app/` в этом репозитории
+- Sales kit: https://zirvey.github.io/PlantUp-SaaS/
+- Product UI: https://zirvey.github.io/PlantUp-SaaS/app/
+- Sale repo: https://github.com/Zirvey/PlantUp-SaaS
 - Source: https://github.com/Zirvey/PlantUp
 
 ## CTA — для старта пришлите
