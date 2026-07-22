@@ -11,8 +11,8 @@ if [[ ! -d "$SRC" ]]; then
   exit 1
 fi
 
-echo "Building frontend in $SRC …"
-(cd "$SRC" && npm run build)
+echo "Building frontend in $SRC (relative base for /app/ demo) …"
+(cd "$SRC" && npx vite build --base ./)
 
 echo "Syncing dist → $DEST/app …"
 rm -rf "$DEST/app"
