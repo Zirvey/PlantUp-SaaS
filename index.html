@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlantUp — Farm Subscription Marketplace SaaS (For Sale)</title>
+  <meta name="description" content="Buy PlantUp: turnkey farm-to-table subscription marketplace. Landing, member/farmer/admin dashboards, Comgate payments, i18n CS/RU/EN. Full-stack source ready to launch." />
+  <link rel="icon" href="assets/plantup.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav id="deck-nav">
+    <div class="container nav-inner">
+      <a class="logo" href="./">
+        <img src="assets/plantup.svg" alt="" width="28" height="28" />
+        <span><span class="cap">P</span>lant<span class="cap">U</span>p</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="#product">Product</a>
+        <a class="nav-link" href="#screenshots">Screenshots</a>
+        <a class="nav-link" href="#stack">Stack</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
+      </div>
+      <span class="badge-sale">● For sale</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-kicker hero-enter" style="--d:0">Production-ready · Full source · Eco marketplace</span>
+        <h1 class="hero-enter" style="--d:1">Farm subscription SaaS — ready to launch</h1>
+        <p class="lead hero-enter" style="--d:2">
+          <strong>PlantUp</strong> is a complete farm-to-table marketplace:
+          magazine landing, membership clubs, product vitrine, cart &amp; Comgate checkout,
+          plus buyer / farmer / admin dashboards. Rebrand and sell access — don’t build from scratch.
+        </p>
+        <div class="hero-stats hero-enter" style="--d:3">
+          <div class="stat"><div class="val" data-count-up="3" data-count-immediate="true">3</div><div class="lbl">User dashboards</div></div>
+          <div class="stat"><div class="val" data-count-up="3" data-count-immediate="true">3</div><div class="lbl">Languages (CS/RU/EN)</div></div>
+          <div class="stat"><div class="val">10%</div><div class="lbl">Profits → trees (eco pledge)</div></div>
+        </div>
+        <div class="cta-row hero-enter" style="--d:4">
+          <a class="btn btn-primary" href="app/">Open product demo</a>
+          <a class="btn btn-secondary" href="demo/">Explore screens</a>
+          <a class="btn btn-ghost" href="#pricing">License options</a>
+        </div>
+      </div>
+      <div class="hero-enter" style="--d:3">
+        <a class="preview-card" href="app/">
+          <img src="assets/screenshots/hero-banner.png" alt="PlantUp homepage preview" />
+          <span class="preview-cta">Open live product UI →</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="product">
+    <div class="container">
+      <div data-reveal>
+        <p class="tag-badge">Product</p>
+        <h2 class="section-title">Everything included</h2>
+        <p class="section-sub">One purchase. Full stack. Ready for your city, your farms, your brand.</p>
+      </div>
+      <div class="grid-3" data-stagger>
+        <div class="card stagger-item">
+          <div class="icon">🌿</div>
+          <h3>Marketing website</h3>
+          <p>Video hero, farm carousel, membership tiers, Prague map, testimonials, eco pledge, mobile nav.</p>
+        </div>
+        <div class="card stagger-item">
+          <div class="icon">🛒</div>
+          <h3>Marketplace & cart</h3>
+          <p>Product vitrine with sticky filters, farm pages, reviews, cart, and Comgate checkout flow.</p>
+        </div>
+        <div class="card stagger-item">
+          <div class="icon">👤</div>
+          <h3>Member dashboard</h3>
+          <p>Profile, orders, subscription status, and payment sync — what paying club members expect.</p>
+        </div>
+        <div class="card stagger-item">
+          <div class="icon">🚜</div>
+          <h3>Farmer dashboard</h3>
+          <p>Farm profile, product CRUD, Cloudinary photos, payouts, and review management.</p>
+        </div>
+        <div class="card stagger-item">
+          <div class="icon">🛡️</div>
+          <h3>Admin panel</h3>
+          <p>Users, farms, products, orders, analytics, platform settings, health, and moderation tools.</p>
+        </div>
+        <div class="card stagger-item">
+          <div class="icon">🌍</div>
+          <h3>i18n built-in</h3>
+          <p>Czech, Russian, and English homepage copy — ready for Central European markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band-forest">
+    <section id="model" style="padding:0">
+      <div class="container">
+        <div data-reveal>
+          <p class="tag-badge">Monetization</p>
+          <h2 class="section-title">Business model in the box</h2>
+          <p class="section-sub">Revenue logic already lives in the schema and API — not a slide deck promise.</p>
+        </div>
+        <div class="grid-3" data-stagger>
+          <div class="card stagger-item">
+            <h3>Memberships</h3>
+            <p>1 / 3 / 12 month club plans unlock farmer pricing and weekly box access.</p>
+          </div>
+          <div class="card stagger-item">
+            <h3>Platform fee</h3>
+            <p>Configurable markup + <code>platformFeeRate</code> on orders, calculated server-side.</p>
+          </div>
+          <div class="card stagger-item">
+            <h3>Farmer payouts</h3>
+            <p>Balances, payout records, and bank transfer refs tracked in Prisma.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="screenshots">
+    <div class="container">
+      <div data-reveal>
+        <p class="tag-badge">Screenshots</p>
+        <h2 class="section-title">Product screenshots</h2>
+        <p class="section-sub">Real UI from the shipped product — landing, auth, checkout, and all three dashboards.</p>
+      </div>
+      <div class="shot-grid" data-stagger>
+        <figure class="shot-card stagger-item">
+          <a href="app/"><img src="assets/screenshots/01-homepage.png" alt="Homepage" loading="lazy" /></a>
+          <figcaption>Landing · membership · marketplace</figcaption>
+        </figure>
+        <figure class="shot-card stagger-item">
+          <a href="app/register.html"><img src="assets/screenshots/02-register.png" alt="Auth" loading="lazy" /></a>
+          <figcaption>Login / register · buyer &amp; farmer</figcaption>
+        </figure>
+        <figure class="shot-card stagger-item">
+          <a href="app/member-dashboard.html"><img src="assets/screenshots/03-member-dashboard.png" alt="Member" loading="lazy" /></a>
+          <figcaption>Member dashboard</figcaption>
+        </figure>
+        <figure class="shot-card stagger-item">
+          <a href="app/farmer-dashboard.html"><img src="assets/screenshots/04-farmer-dashboard.png" alt="Farmer" loading="lazy" /></a>
+          <figcaption>Farmer dashboard</figcaption>
+        </figure>
+        <figure class="shot-card stagger-item">
+          <a href="app/admin-dashboard.html"><img src="assets/screenshots/05-admin-dashboard.png" alt="Admin" loading="lazy" /></a>
+          <figcaption>Admin panel</figcaption>
+        </figure>
+        <figure class="shot-card stagger-item">
+          <a href="app/checkout.html"><img src="assets/screenshots/06-checkout.png" alt="Checkout" loading="lazy" /></a>
+          <figcaption>Checkout · Comgate ready</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container">
+      <div data-reveal>
+        <p class="tag-badge">Stack</p>
+        <h2 class="section-title">Built to ship</h2>
+        <p class="section-sub">Modern full-stack SaaS with tests, CI gate, and ops docs.</p>
+      </div>
+      <div class="grid-2" data-stagger>
+        <div class="card stagger-item">
+          <h3>Frontend</h3>
+          <p>Vite 6 · Vanilla JS modules · Tailwind · Lenis · Vitest · Arva-inspired design system</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>Backend</h3>
+          <p>Node · Express 5 · Prisma · PostgreSQL · Zod · JWT · rate limits</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>Integrations</h3>
+          <p>Comgate payments · Cloudinary media · Vercel + Railway deploy configs</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>Quality</h3>
+          <p><code>npm run verify</code> · SECURITY / PRODUCTION / INCIDENT_RUNBOOK · seed + migrations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <div data-reveal>
+        <p class="tag-badge">Go-to-market</p>
+        <h2 class="section-title">How you monetize</h2>
+        <p class="section-sub">A clear path from purchase to recurring revenue.</p>
+      </div>
+      <div class="grid-2" data-stagger>
+        <div class="card stagger-item">
+          <h3>1. Acquire &amp; rebrand</h3>
+          <p>Get full source, PlantUp design tokens, and dashboards. Launch as-is or white-label.</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>2. Onboard farms &amp; members</h3>
+          <p>Farmers list products; city buyers join membership and order until cut-off day.</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>3. Collect platform fees</h3>
+          <p>Membership + per-order markup already modeled — plug Comgate (or swap provider).</p>
+        </div>
+        <div class="card stagger-item">
+          <h3>4. Expand cities</h3>
+          <p>i18n and district delivery UX (Prague map) make multi-city expansion straightforward.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div data-reveal>
+        <p class="tag-badge">Licensing</p>
+        <h2 class="section-title">Licensing options</h2>
+        <p class="section-sub">Flexible handoff — source code, turnkey deploy, or white-label.</p>
+      </div>
+      <div class="grid-3" data-stagger>
+        <div class="card price-card stagger-item">
+          <h3>Source license</h3>
+          <div class="price">Full repo</div>
+          <ul>
+            <li>Frontend + backend + Prisma</li>
+            <li>All three dashboards</li>
+            <li>Deploy docs &amp; tests</li>
+            <li>7-day launch support</li>
+          </ul>
+        </div>
+        <div class="card price-card featured stagger-item">
+          <h3>SaaS-ready</h3>
+          <div class="price">Launch kit</div>
+          <ul>
+            <li>Everything in Source</li>
+            <li>Deploy on your domains</li>
+            <li>Branding + Comgate setup</li>
+            <li>Cloudinary wiring</li>
+            <li>30-day support</li>
+          </ul>
+        </div>
+        <div class="card price-card stagger-item">
+          <h3>Enterprise</h3>
+          <div class="price">Custom</div>
+          <ul>
+            <li>White-label branding</li>
+            <li>New markets / languages</li>
+            <li>Payment provider swap</li>
+            <li>Dedicated onboarding</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card cta-card" data-reveal>
+        <h3>See it yourself</h3>
+        <p>Explore the product before you buy — landing, auth, and all dashboard shells.</p>
+        <p style="margin-top:16px">
+          <a class="btn btn-primary" href="app/">Product demo</a>
+          <a class="btn btn-secondary" href="demo/">Screen hub</a>
+          <a class="btn btn-ghost" href="mailto:temirlankakishev@gmail.com">Contact</a>
+        </p>
+        <p class="muted" style="margin-top:20px">Email <strong>temirlankakishev@gmail.com</strong> for pricing, due diligence, and repository handoff.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><strong>PlantUp</strong> — Farm subscription marketplace SaaS · For sale</p>
+      <p style="margin-top:0.5rem">Local farms · Seasonal produce · 10% of profits → tree planting</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/deck.js"></script>
+</body>
+</html>

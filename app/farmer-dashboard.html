@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет фермера — PlantUp</title>
+  <script type="module" crossorigin src="/assets/farmer-CmuNPc0d.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-DX17wzzM.js">
+  <link rel="modulepreload" crossorigin href="/assets/auth-CQpDYLA_.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-BjIe6zCh.css">
+  <link rel="stylesheet" crossorigin href="/assets/farmer-W3ubTg8a.css">
+  <link rel="stylesheet" crossorigin href="/assets/tokens-Dgz6gFMb.css">
+  <link rel="stylesheet" crossorigin href="/assets/app-shell-DUJ8vege.css">
+  <link rel="stylesheet" crossorigin href="/assets/dashboard-arva-Bq4_xBjb.css">
+</head>
+<body class="pu-shell min-h-screen">
+    <header class="pu-nav" role="navigation" aria-label="Основная навигация">
+        <div class="pu-nav__inner">
+            <a href="index.html" class="pu-nav__logo">
+                <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#07503f"/>
+                </svg>
+                <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
+            </a>
+
+            <nav class="pu-nav__links" aria-label="Разделы">
+                <a href="index.html#membership" class="pu-nav__link nav-link">Клуб</a>
+                <a href="index.html#farmers" class="pu-nav__link nav-link">Фермеры</a>
+                <a href="index.html#how-it-works" class="pu-nav__link nav-link">Как работает</a>
+                <a href="index.html#marketplace" class="pu-nav__link nav-link">Витрина</a>
+            </nav>
+
+            <div class="pu-nav__actions">
+                <button type="button" onclick="logout()" class="pu-btn pu-btn--ghost hidden md:inline-flex" aria-label="Выйти">Выйти</button>
+                <button type="button" id="mobile-menu-btn" class="pu-nav__menu-btn md:hidden" aria-label="Открыть меню" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="pu-nav__drawer hidden">
+            <a href="index.html#membership" class="pu-nav__drawer-link mobile-nav-link">Клуб</a>
+            <a href="index.html#farmers" class="pu-nav__drawer-link mobile-nav-link">Фермеры</a>
+            <a href="index.html#how-it-works" class="pu-nav__drawer-link mobile-nav-link">Как работает</a>
+            <a href="index.html#marketplace" class="pu-nav__drawer-link mobile-nav-link">Витрина</a>
+            <button type="button" onclick="logout()" class="pu-btn pu-btn--forest pu-nav__drawer-logout">Выйти</button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="user-avatar">👨‍🌾</div>
+                <div class="user-name" id="sidebar-user-name">Фермер</div>
+                <div class="user-email" id="sidebar-user-email">farm@example.com</div>
+                <div class="user-status">Аккаунт фермера</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button type="button" class="nav-item" data-section="overview">
+                    <span class="nav-item-icon">📊</span>
+                    <span>Обзор</span>
+                </button>
+                <button type="button" class="nav-item" data-section="products">
+                    <span class="nav-item-icon">📦</span>
+                    <span>Товары</span>
+                </button>
+                <button type="button" class="nav-item" data-section="my-farm">
+                    <span class="nav-item-icon">🏡</span>
+                    <span>Моя Ферма</span>
+                </button>
+                <button type="button" class="nav-item" data-section="pickup">
+                    <span class="nav-item-icon">🚚</span>
+                    <span>Поставки</span>
+                </button>
+                <button type="button" class="nav-item" data-section="payouts">
+                    <span class="nav-item-icon">💰</span>
+                    <span>Выплаты</span>
+                </button>
+                <button type="button" class="nav-item" data-section="reviews">
+                    <span class="nav-item-icon">⭐</span>
+                    <span>Отзывы</span>
+                    <span class="nav-badge hidden" id="reviews-badge">0</span>
+                </button>
+                <button type="button" class="nav-item" data-section="settings">
+                    <span class="nav-item-icon">⚙️</span>
+                    <span>Настройки</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Обзор</h1>
+                    <p class="dashboard-subtitle">Заказы, доход и активность</p>
+                </div>
+
+                <!-- Order Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green">💰</div>
+                        <div class="stat-label">Доход за месяц</div>
+                        <div class="stat-value" id="stat-revenue">0 Kč</div>
+                        <div class="stat-change" id="stat-revenue-change" class="stat-change stat-change--positive">К выплате: 0 Kč</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">📋</div>
+                        <div class="stat-label">Заказы</div>
+                        <div class="stat-value" id="stat-orders">0</div>
+                        <div class="stat-change" id="stat-orders-pending" class="stat-change stat-change--warning">В ожидании: 0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📦</div>
+                        <div class="stat-label">Товаров</div>
+                        <div class="stat-value" id="stat-products">0</div>
+                        <div class="stat-change" id="stat-products-active" class="stat-change stat-change--muted">Активных: 0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">⭐</div>
+                        <div class="stat-label">Рейтинг</div>
+                        <div class="stat-value" id="stat-rating">0.0</div>
+                        <div class="stat-change" id="stat-reviews-count" class="stat-change stat-change--muted">0 отзывов</div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📋</span>
+                            Последние заказы
+                        </h2>
+                    </div>
+                    <div id="recent-orders">
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-title">Пока нет заказов</div>
+                            <div class="empty-text">Заказы появятся после первых покупок</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Мои товары</h1>
+                    <p class="dashboard-subtitle">Управление ассортиментом</p>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="content-card">
+                    <div class="products-toolbar">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="product-search" class="search-input" placeholder="Поиск товаров..." oninput="filterProducts()">
+                        </div>
+                        <div class="filter-box">
+                            <select id="category-filter" class="filter-select" onchange="filterProducts()">
+                                <option value="">Все категории</option>
+                                <option value="vegetables">🥬 Овощи</option>
+                                <option value="fruits">🍎 Фрукты</option>
+                                <option value="berries">🍓 Ягоды</option>
+                                <option value="herbs">🌿 Зелень</option>
+                                <option value="potatoes">🥔 Корнеплоды</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add/Edit Product Form -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">➕</span>
+                            <span id="form-title">Добавить товар</span>
+                        </h2>
+                        <button type="button" id="cancel-edit-btn" class="btn-cancel-edit hidden" onclick="cancelEdit()">
+                            <span aria-hidden="true">✕</span>
+                            <span>Отмена</span>
+                        </button>
+                    </div>
+
+                    <div id="add-product-form" class="add-product-form">
+                        <input type="hidden" id="product-edit-index" value="-1">
+                        <input type="hidden" id="product-edit-id" value="0">
+
+                        <!-- Photo Upload Section -->
+                        <div class="form-group">
+                            <label class="form-label">📸 Фото товара</label>
+                            <div class="image-upload-area">
+                                <div id="upload-placeholder">
+                                    <div class="upload-icon">📷</div>
+                                    <div class="upload-text">Перетащите фото сюда</div>
+                                    <div class="upload-subtext">или нажмите кнопку ниже</div>
+                                    <input type="file" id="product-image" accept="image/*" capture="environment" style="display: none;">
+                                    <button type="button" class="btn-upload" onclick="document.getElementById('product-image').click()">
+                                        📁 Выбрать фото
+                                    </button>
+                                    <div class="upload-hint">JPG, PNG, WEBP до 5MB</div>
+                                </div>
+                                <div id="product-image-preview" style="display: none;">
+                                    <img id="image-preview" src="" alt="Preview" class="preview-image">
+                                    <div class="preview-actions">
+                                        <button type="button" class="btn-cancel-upload" onclick="clearProductImage()">
+                                            ✕ Отменить
+                                        </button>
+                                        <button type="button" class="btn-replace-upload" onclick="document.getElementById('product-image').click()">
+                                            🔄 Заменить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Info Section -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">📦 Основная информация</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="product-name">Название *</label>
+                                    <input type="text" id="product-name" class="form-input" placeholder="Морковь" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="product-category">Категория *</label>
+                                    <select id="product-category" class="form-select" required>
+                                        <option value="vegetables">🥬 Овощи</option>
+                                        <option value="fruits">🍎 Фрукты</option>
+                                        <option value="berries">🍓 Ягоды</option>
+                                        <option value="herbs">🌿 Зелень</option>
+                                        <option value="potatoes">🥔 Картофель</option>
+                                        <option value="eggs">🥚 Яйца</option>
+                                        <option value="meat">🥩 Мясо</option>
+                                        <option value="dairy">🥛 Молочные продукты</option>
+                                        <option value="grains">🌾 Зерновые</option>
+                                        <option value="honey">🍯 Мёд</option>
+                                        <option value="other">📦 Другое</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="product-quantity">Кол-во *</label>
+                                    <div style="display: grid; grid-template-columns: 1fr 120px; gap: 0.75rem;">
+                                        <input type="number" id="product-quantity" class="form-input" placeholder="50" min="1" required>
+                                        <select id="product-unit" class="form-select">
+                                            <option value="kg">кг</option>
+                                            <option value="pcs">шт</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="product-price">Цена (Kč/ед) *</label>
+                                    <input type="number" id="product-price" class="form-input" placeholder="18" min="1" required>
+                                    <div class="upload-hint" style="margin-top: 0.25rem;">За выбранную единицу</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="product-description">Описание</label>
+                                <textarea id="product-description" class="form-input form-textarea" placeholder="Свежая морковь с нашей фермы, без химикатов..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-add" id="add-product-btn" onclick="addProduct()">
+                                <span aria-hidden="true">✓</span>
+                                <span>Добавить товар</span>
+                            </button>
+                            <button type="button" class="btn-add" id="save-edit-btn" onclick="saveEdit()" style="display: none;">
+                            <span aria-hidden="true">✓</span>
+                            <span>Сохранить</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products List -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📦</span>
+                            Товары на складе
+                        </h2>
+                        <span class="badge badge-green" id="products-count">0 позиций</span>
+                    </div>
+
+                    <div class="products-grid" id="products-list">
+                        <div class="empty-state" style="grid-column: 1 / -1;">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-title">Пока нет товаров</div>
+                            <div class="empty-text">Добавьте первый товар выше</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pickup Section -->
+            <section id="pickup" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Забор груза</h1>
+                    <p class="dashboard-subtitle">График забора урожая с вашей фермы</p>
+                </div>
+
+                <!-- Next Pickup -->
+                <div class="content-card pickup-card">
+                    <div class="pickup-header">
+                        <div class="pickup-icon">🚚</div>
+                        <div class="pickup-info">
+                            <h2 class="pickup-title">Следующий забор груза</h2>
+                            <p class="pickup-description">Наша машина приедет к вам на ферму для забора урожая</p>
+                            <div class="pickup-details">
+                                <div class="pickup-detail">
+                                    <span class="pickup-detail-label">📅 Дата</span>
+                                    <span class="pickup-detail-value" id="next-pickup-date">Четверг, 26 февраля</span>
+                                </div>
+                                <div class="pickup-detail">
+                                    <span class="pickup-detail-label">🕐 Время</span>
+                                    <span class="pickup-detail-value" id="next-pickup-time">08:00 - 12:00</span>
+                                </div>
+                                <div class="pickup-detail">
+                                    <span class="pickup-detail-label">📍 Адрес</span>
+                                    <span class="pickup-detail-value" id="next-pickup-address">Ваша ферма</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pickup-weight">
+                            <div class="pickup-weight-value" id="next-pickup-weight">150 кг</div>
+                            <div class="pickup-weight-label">к забору</div>
+                        </div>
+                    </div>
+                    <div class="pickup-status">
+                        <div class="status-badge status-confirmed">✓ Подтверждён</div>
+                    </div>
+                </div>
+
+                <!-- Pickup History -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📋</span>
+                            История заборов
+                        </h2>
+                    </div>
+
+                    <div id="pickup-history">
+                        <div class="empty-state">
+                            <div class="empty-icon">📅</div>
+                            <div class="empty-title">История пуста</div>
+                            <div class="empty-text">Здесь появятся записи после первых заборов</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pickup Calendar -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📅</span>
+                            Календарь поставок
+                        </h2>
+                    </div>
+
+                    <div class="pickup-calendar">
+                        <div class="calendar-info">
+                            <p class="calendar-text">🚚 Забор груза происходит каждый <strong>четверг</strong></p>
+                            <p class="calendar-text">📦 Товары должны быть готовы к <strong>08:00</strong></p>
+                            <p class="calendar-text">⏰ Время забора: <strong>08:00 - 12:00</strong></p>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day">
+                                <span class="day-name">Пн</span>
+                                <span class="day-number">—</span>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-name">Вт</span>
+                                <span class="day-number">—</span>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-name">Ср</span>
+                                <span class="day-number">—</span>
+                            </div>
+                            <div class="calendar-day active">
+                                <span class="day-name">Чт</span>
+                                <span class="day-number">🚚</span>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-name">Пт</span>
+                                <span class="day-number">—</span>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-name">Сб</span>
+                                <span class="day-number">—</span>
+                            </div>
+                            <div class="calendar-day">
+                                <span class="day-name">Вс</span>
+                                <span class="day-number">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payouts Section -->
+            <section id="payouts" class="dashboard-section hidden">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Выплаты</h1>
+                    <p class="dashboard-subtitle">История выплат и текущий баланс</p>
+                </div>
+
+                <!-- Pending Payout -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">💰</span>
+                            Доступно к выплате
+                        </h2>
+                    </div>
+                    <div class="payout-summary">
+                        <div class="payout-amount" id="pending-amount">0 Kč</div>
+                        <div class="payout-description">Средства от оплаченных заказов</div>
+                        <button class="btn-primary" id="request-payout-btn" disabled>
+                            Запросить выплату
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payout History -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📋</span>
+                            История выплат
+                        </h2>
+                    </div>
+                    <div id="payouts-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">💸</div>
+                            <div class="empty-title">Пока нет выплат</div>
+                            <div class="empty-text">Здесь появится история после первых выплат</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reviews Section -->
+            <section id="reviews" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Отзывы и рейтинги</h1>
+                    <p class="dashboard-subtitle">Что говорят клиенты о вашей ферме</p>
+                </div>
+
+                <!-- Rating Overview -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">⭐</span>
+                            Общий рейтинг
+                        </h2>
+                    </div>
+
+                    <div class="rating-overview">
+                        <div class="rating-main">
+                            <div class="rating-value" id="overall-rating">4.9</div>
+                            <div class="rating-stars" id="rating-stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-count" id="rating-count">0 отзывов</div>
+                        </div>
+                        <div class="rating-bars">
+                            <div class="rating-bar-row">
+                                <span class="rating-bar-label">5 ★</span>
+                                <div class="rating-bar">
+                                    <div class="rating-bar-fill" id="rating-5" style="width: 0%"></div>
+                                </div>
+                                <span class="rating-bar-count" id="count-5">0</span>
+                            </div>
+                            <div class="rating-bar-row">
+                                <span class="rating-bar-label">4 ★</span>
+                                <div class="rating-bar">
+                                    <div class="rating-bar-fill" id="rating-4" style="width: 0%"></div>
+                                </div>
+                                <span class="rating-bar-count" id="count-4">0</span>
+                            </div>
+                            <div class="rating-bar-row">
+                                <span class="rating-bar-label">3 ★</span>
+                                <div class="rating-bar">
+                                    <div class="rating-bar-fill" id="rating-3" style="width: 0%"></div>
+                                </div>
+                                <span class="rating-bar-count" id="count-3">0</span>
+                            </div>
+                            <div class="rating-bar-row">
+                                <span class="rating-bar-label">2 ★</span>
+                                <div class="rating-bar">
+                                    <div class="rating-bar-fill" id="rating-2" style="width: 0%"></div>
+                                </div>
+                                <span class="rating-bar-count" id="count-2">0</span>
+                            </div>
+                            <div class="rating-bar-row">
+                                <span class="rating-bar-label">1 ★</span>
+                                <div class="rating-bar">
+                                    <div class="rating-bar-fill" id="rating-1" style="width: 0%"></div>
+                                </div>
+                                <span class="rating-bar-count" id="count-1">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">💬</span>
+                            Отзывы клиентов
+                        </h2>
+                    </div>
+
+                    <div id="reviews-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">💬</div>
+                            <div class="empty-title">Пока нет отзывов</div>
+                            <div class="empty-text">Отзывы появятся после первых продаж</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Farm Section -->
+            <section id="my-farm" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Моя Ферма</h1>
+                    <p class="dashboard-subtitle">Управление информацией о вашей ферме</p>
+                </div>
+
+                <!-- Farm Profile Card -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">🏡</span>
+                            Профиль фермы
+                        </h2>
+                        <button type="button" class="btn-save" onclick="saveFarmProfile()">
+                            <span aria-hidden="true">✓</span>
+                            <span>Сохранить</span>
+                        </button>
+                    </div>
+
+                    <div class="farm-profile-editor">
+                        <!-- Farm Icon/Logo Upload -->
+                        <div class="form-group">
+                            <label class="form-label">🏡 Логотип фермы</label>
+                            <div class="image-upload-area" style="border: 2px dashed rgba(132, 169, 60, 0.3); border-radius: 0.75rem; padding: 2rem; text-align: center; background: rgba(132, 169, 60, 0.05); transition: all 0.3s ease;">
+                                <div id="farm-upload-placeholder">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.6;">📷</div>
+                                    <div style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem; font-weight: 500;">Перетащите логотип сюда</div>
+                                    <div style="color: #9ca3af; font-size: 0.8rem; margin-bottom: 1.5rem;">или нажмите кнопку ниже</div>
+                                    <input type="file" id="farm-logo-upload" accept="image/*" style="display: none;">
+                                    <button type="button" class="btn-upload" onclick="document.getElementById('farm-logo-upload').click()">
+                                        📁 Выбрать фото
+                                    </button>
+                                    <div style="margin-top: 1rem; font-size: 0.75rem; color: #9ca3af;">JPG, PNG, WEBP до 5MB</div>
+                                </div>
+                                <div id="farm-logo-preview" style="display: none;">
+                                    <img id="farm-logo-image" src="" alt="Farm logo" style="max-width: 200px; max-height: 200px; border-radius: 1rem; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                                    <div style="margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center;">
+                                        <button type="button" class="btn-cancel-upload" onclick="clearFarmLogo()" style="background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; cursor: pointer; transition: all 0.2s;">
+                                            ✕ Отменить
+                                        </button>
+                                        <button type="button" class="btn-replace-upload" onclick="document.getElementById('farm-logo-upload').click()" style="background: white; border: 1px solid rgba(132, 169, 60, 0.3); color: #84A93C; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; cursor: pointer; transition: all 0.2s;">
+                                            🔄 Заменить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="farm-logo-base64" value="">
+                        </div>
+
+                        <!-- Farm Name -->
+                        <div class="form-group">
+                            <label class="form-label" for="farm-name">Название фермы *</label>
+                            <input type="text" id="farm-name" class="form-input" placeholder="Например: Eco Farma Luxus" required>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label class="form-label" for="farm-description">Описание</label>
+                            <textarea id="farm-description" class="form-input" placeholder="Расскажите о вашей ферме, традициях, методах выращивания..." rows="4"></textarea>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="farm-location">Регион *</label>
+                                <input type="text" id="farm-location" class="form-input" placeholder="Например: Южная Чехия" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="farm-website">Сайт</label>
+                                <input type="url" id="farm-website" class="form-input" placeholder="https://example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Photos -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📸</span>
+                            Фотографии фермы
+                        </h2>
+                    </div>
+
+                    <div class="farm-photos-section">
+                        <div class="photo-upload-area" id="photo-upload-area">
+                            <div class="upload-placeholder">
+                                <span style="font-size: 3rem;">📷</span>
+                                <p style="margin: 1rem 0; color: #6b7280;">Перетащите фото сюда или нажмите для загрузки</p>
+                                <p style="font-size: 0.875rem; color: #9ca3af;">JPG, PNG до 5MB</p>
+                            </div>
+                            <input type="file" id="farm-photo-upload" accept="image/*" multiple capture="environment" style="display: none;">
+                        </div>
+
+                        <div class="photos-grid" id="farm-photos-grid">
+                            <!-- Photos will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Stats Preview -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📊</span>
+                            Статистика фермы
+                        </h2>
+                    </div>
+
+                    <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                        <div class="stat-card">
+                            <div class="stat-label">Товаров</div>
+                            <div class="stat-value" id="farm-stat-products">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Продаж</div>
+                            <div class="stat-value" id="farm-stat-sales">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Рейтинг</div>
+                            <div class="stat-value" id="farm-stat-rating">-</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Отзывов</div>
+                            <div class="stat-value" id="farm-stat-reviews">0</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Настройки</h1>
+                    <p class="dashboard-subtitle">Управление аккаунтом и уведомления</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">👤</span>
+                            Личная информация
+                        </h2>
+                    </div>
+
+                    <div id="settings-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="settings-name">ФИО</label>
+                                <input type="text" id="settings-name" class="form-input" placeholder="Иванов Иван Иванович">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="settings-email">Email</label>
+                                <input type="email" id="settings-email" class="form-input" placeholder="farm@example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="settings-phone">Телефон</label>
+                                <input type="tel" id="settings-phone" class="form-input" placeholder="+420 XXX XXX XXX">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="settings-address">Адрес</label>
+                                <input type="text" id="settings-address" class="form-input" placeholder="Улица, номер дома">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-save" onclick="saveSettings()">
+                            <span aria-hidden="true">✓</span>
+                            <span>Сохранить изменения</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">🔔</span>
+                            Уведомления
+                        </h2>
+                    </div>
+
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Email уведомления</div>
+                            <div class="setting-description">Получать новости о заказах на email</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">SMS уведомления</div>
+                            <div class="setting-description">Получать SMS о новых заказах</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">🔒</span>
+                            Безопасность
+                        </h2>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Сменить пароль</div>
+                            <div class="setting-description">Измените пароль вашего аккаунта</div>
+                        </div>
+                        <button type="button" class="btn-save" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Изменить</button>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Выйти из аккаунта</div>
+                            <div class="setting-description">Завершить текущую сессию</div>
+                        </div>
+                        <button type="button" class="btn-save" style="padding: 0.5rem 1rem; font-size: 0.875rem; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);" onclick="logout()">
+                            <span aria-hidden="true">↪️</span>
+                            <span>Выйти</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#84A93C] text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">PlantUp</h3>
+                    <p class="text-white/80 text-sm">Свежие органические продукты от местных фермеров Праги.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Компания</h4>
+                    <ul class="space-y-2 text-white/80 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">О нас</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Доставка</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Районы доставки</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Holešovice</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Vinohrady</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Žižkov</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Dejvice</span>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Фермерам</h4>
+                    <ul class="space-y-2 text-white/80 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Присоединиться</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Поддержка</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Eco Counter -->
+            <div class="border-t border-white/20 pt-8 mt-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center">
+                    <div class="text-5xl mb-4" aria-hidden="true">♻️</div>
+                    <h3 class="text-2xl font-bold mb-2">Эко-счетчик</h3>
+                    <p class="text-white/80 mb-4">Наши клиенты в Праге уже сэкономили</p>
+                    <div class="text-6xl font-extrabold" style="color: #C5D1A8">
+                        <span id="eco-counter">12450</span>
+                    </div>
+                    <p class="text-lg text-white/80 mt-2">пластиковых пакетов 🌍</p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+                <p>© 2026 PlantUp Praha. Všechna práva vyhrazena. S láskou 💚 pro farmáře a zákazníky.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+</body>
+</html>

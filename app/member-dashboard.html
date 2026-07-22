@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — PlantUp</title>
+  <script type="module" crossorigin src="/assets/member-6q25ZMuj.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-DX17wzzM.js">
+  <link rel="modulepreload" crossorigin href="/assets/auth-CQpDYLA_.js">
+  <link rel="modulepreload" crossorigin href="/assets/dom-ernDEBDM.js">
+  <link rel="modulepreload" crossorigin href="/assets/ui-Iu01fIn2.js">
+  <link rel="modulepreload" crossorigin href="/assets/products-Bzly2XSj.js">
+  <link rel="modulepreload" crossorigin href="/assets/toast-BDydBu1C.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-BjIe6zCh.css">
+  <link rel="stylesheet" crossorigin href="/assets/tokens-Dgz6gFMb.css">
+  <link rel="stylesheet" crossorigin href="/assets/app-shell-DUJ8vege.css">
+  <link rel="stylesheet" crossorigin href="/assets/dashboard-arva-Bq4_xBjb.css">
+</head>
+<body class="pu-shell min-h-screen">
+    <header class="pu-nav" role="navigation" aria-label="Основная навигация">
+        <div class="pu-nav__inner">
+            <a href="index.html" class="pu-nav__logo">
+                <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#07503f"/>
+                </svg>
+                <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
+            </a>
+
+            <nav class="pu-nav__links" aria-label="Разделы">
+                <a href="index.html#membership" class="pu-nav__link nav-link">Клуб</a>
+                <a href="index.html#farmers" class="pu-nav__link nav-link">Фермеры</a>
+                <a href="index.html#how-it-works" class="pu-nav__link nav-link">Как работает</a>
+                <a href="index.html#marketplace" class="pu-nav__link nav-link">Витрина</a>
+            </nav>
+
+            <div class="pu-nav__actions">
+                <button type="button" onclick="toggleCart()" class="pu-btn pu-btn--ghost pu-cart-btn" aria-label="Открыть корзину">
+                    <svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span id="cart-count" class="pu-cart-badge">0</span>
+                </button>
+                <button type="button" onclick="logout()" class="pu-btn pu-btn--ghost hidden md:inline-flex" aria-label="Выйти">Выйти</button>
+                <button type="button" onclick="toggleCart()" class="pu-btn pu-btn--ghost pu-cart-btn md:hidden" aria-label="Открыть корзину">
+                    <svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span id="mobile-cart-count-header" class="pu-cart-badge">0</span>
+                </button>
+                <button type="button" id="mobile-menu-btn" class="pu-nav__menu-btn md:hidden" aria-label="Открыть меню" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="pu-nav__drawer hidden">
+            <a href="index.html#membership" class="pu-nav__drawer-link mobile-nav-link">Клуб</a>
+            <a href="index.html#farmers" class="pu-nav__drawer-link mobile-nav-link">Фермеры</a>
+            <a href="index.html#how-it-works" class="pu-nav__drawer-link mobile-nav-link">Как работает</a>
+            <a href="index.html#marketplace" class="pu-nav__drawer-link mobile-nav-link">Витрина</a>
+            <button type="button" onclick="logout()" class="pu-btn pu-btn--forest pu-nav__drawer-logout">Выйти</button>
+        </div>
+    </header>
+
+    <div id="cart-sidebar" class="pu-cart-sidebar translate-x-full" role="dialog" aria-label="Корзина покупок" aria-modal="true">
+        <div class="pu-cart-sidebar__inner">
+            <div class="pu-cart-sidebar__header">
+                <h2 class="pu-cart-sidebar__title">Корзина</h2>
+                <button type="button" onclick="toggleCart()" class="pu-cart-sidebar__close" aria-label="Закрыть корзину">×</button>
+            </div>
+            <div id="cart-items" class="pu-cart-sidebar__items">
+                <div class="pu-cart-empty">
+                    <div class="pu-cart-empty__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <p class="pu-cart-empty__title">Корзина пуста</p>
+                    <p class="pu-cart-empty__text">Добавьте продукты из витрины — цены для участников клуба</p>
+                </div>
+            </div>
+            <div class="pu-cart-sidebar__footer">
+                <div class="pu-cart-sidebar__total">
+                    <span>Итого</span>
+                    <span id="cart-total">0 Kč</span>
+                </div>
+                <button type="button" class="pu-btn pu-btn--forest pu-btn--full">Оформить заказ</button>
+                <p class="pu-cart-sidebar__note">Доставка каждую пятницу</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="toggleCart()" class="pu-overlay hidden" aria-hidden="true"></div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="user-avatar">👤</div>
+                <div class="user-name" id="sidebar-user-name">Участник</div>
+                <div class="user-email" id="sidebar-user-email">email@example.com</div>
+                <div class="user-status">Активная подписка</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button type="button" class="nav-item" data-section="overview">
+                    <span class="nav-item-icon">📊</span>
+                    <span>Обзор</span>
+                </button>
+                <button type="button" class="nav-item" data-section="orders">
+                    <span class="nav-item-icon">📦</span>
+                    <span>Заказы</span>
+                </button>
+                <button type="button" class="nav-item" data-section="subscription">
+                    <span class="nav-item-icon">💚</span>
+                    <span>Подписка</span>
+                </button>
+                <button type="button" class="nav-item" data-section="settings">
+                    <span class="nav-item-icon">⚙️</span>
+                    <span>Настройки</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Добро пожаловать, <span id="main-user-name">Участник</span>!</h1>
+                    <p class="dashboard-subtitle">Обзор вашей активности и подписки</p>
+                </div>
+
+                <div class="content-card" id="payment-sync-card" style="display: none;">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">💳</span>
+                            Статус последней оплаты
+                        </h2>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span id="payment-sync-badge" class="subscription-badge">В обработке</span>
+                            <button
+                                id="payment-sync-dismiss"
+                                type="button"
+                                class="btn-dismiss"
+                            >
+                                Скрыть
+                            </button>
+                        </div>
+                    </div>
+                    <div id="payment-sync-title">Платеж обрабатывается</div>
+                    <div id="payment-sync-description">
+                        Ожидаем подтверждение от Comgate, статус обновляется автоматически.
+                    </div>
+                    <div class="payment-sync-meta">
+                        <div>Сумма: <strong id="payment-sync-amount">—</strong></div>
+                        <div>Ссылка оплаты: <strong id="payment-sync-order">—</strong></div>
+                        <div>Транзакция: <strong id="payment-sync-transaction">—</strong></div>
+                    </div>
+                    <div id="payment-sync-actions">
+                        <a id="payment-retry-link" href="checkout.html" class="btn-save mt-actions">
+                            <span aria-hidden="true">🔁</span>
+                            <span>Повторить оплату</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green">📦</div>
+                        <div class="stat-label">Заказов всего</div>
+                        <div class="stat-value" id="stat-orders">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">🚚</div>
+                        <div class="stat-label">Доставок в месяц</div>
+                        <div class="stat-value">4</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">💰</div>
+                        <div class="stat-label">Сэкономлено</div>
+                        <div class="stat-value" id="stat-saved">0 Kč</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">🌱</div>
+                        <div class="stat-label">Эко-очков</div>
+                        <div class="stat-value" id="stat-eco">0</div>
+                    </div>
+                </div>
+
+                <!-- Next Delivery -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">🚚</span>
+                            Следующая доставка
+                        </h2>
+                        <a href="javascript:void(0)" class="card-action" onclick="navigateTo('orders'); return false;">Все заказы →</a>
+                    </div>
+                    
+                    <div class="order-item">
+                        <div class="order-icon">📦</div>
+                        <div class="order-details">
+                            <div class="order-name">Бокс с овощами</div>
+                            <div class="order-meta">Пятница, 27 февраля • 14:00 - 18:00</div>
+                        </div>
+                        <div class="order-status processing">В пути</div>
+                    </div>
+
+                    <div class="delivery-timeline delivery-timeline-spaced">
+                        <div class="timeline-step">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-label">Заказан</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-label">Собирается</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-label">В пути</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-dot pending"></div>
+                            <div class="timeline-label">Доставлен</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📋</span>
+                            Последние заказы
+                        </h2>
+                        <a href="javascript:void(0)" class="card-action" onclick="navigateTo('orders'); return false;">Все заказы →</a>
+                    </div>
+                    
+                    <div id="recent-orders">
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-title">Пока нет заказов</div>
+                            <div class="empty-text">Закажите продукты из витрины</div>
+                            <a href="index.html#marketplace" class="btn-save mt-actions">
+                                <span aria-hidden="true">🛒</span>
+                                <span>В магазин</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions (Mobile only) -->
+                <div class="content-card md:hidden">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">⚡</span>
+                            Быстрые действия
+                        </h2>
+                    </div>
+
+                    <div class="quick-actions">
+                        <a href="index.html#membership" class="quick-action-btn">
+                            <span class="quick-action-icon">🥕</span>
+                            <span>Клуб</span>
+                        </a>
+                        <a href="index.html#farmers" class="quick-action-btn">
+                            <span class="quick-action-icon">👨‍🌾</span>
+                            <span>Фермеры</span>
+                        </a>
+                        <a href="index.html#how-it-works" class="quick-action-btn">
+                            <span class="quick-action-icon">ℹ️</span>
+                            <span>Как работает</span>
+                        </a>
+                        <a href="index.html#marketplace" class="quick-action-btn">
+                            <span class="quick-action-icon">🛒</span>
+                            <span>Витрина</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Мои заказы</h1>
+                    <p class="dashboard-subtitle">История всех ваших заказов</p>
+                </div>
+
+                <div class="content-card">
+                    <div id="orders-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">📦</div>
+                            <div class="empty-title">Пока нет заказов</div>
+                            <div class="empty-text">Закажите продукты из витрины</div>
+                            <a href="index.html#marketplace" class="btn-save mt-actions">
+                                <span aria-hidden="true">🛒</span>
+                                <span>В магазин</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Section -->
+            <section id="subscription" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Моя подписка</h1>
+                    <p class="dashboard-subtitle">Управление подпиской и доставкой</p>
+                </div>
+
+                <div class="content-card subscription-card" id="active-subscription-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">💚</span>
+                            Текущий план
+                        </h2>
+                        <span class="subscription-badge" id="subscription-status-badge">
+                            <span>✓</span>
+                            <span>Активна</span>
+                        </span>
+                    </div>
+
+                    <div class="stats-grid subscription-stats">
+                        <div>
+                            <div class="stat-label">План</div>
+                            <div class="stat-value" id="subscription-plan">1 месяц</div>
+                        </div>
+                        <div>
+                            <div class="stat-label">Дата окончания</div>
+                            <div class="stat-value" id="subscription-end-date">—</div>
+                        </div>
+                        <div>
+                            <div class="stat-label">Доставок в месяц</div>
+                            <div class="stat-value">4</div>
+                        </div>
+                    </div>
+
+                    <div class="action-row">
+                        <a href="checkout.html" class="btn-save" id="renew-subscription-btn">
+                            <span aria-hidden="true">⭐</span>
+                            <span>Продлить подписку</span>
+                        </a>
+                        <a href="index.html#membership" class="btn-secondary">
+                            <span aria-hidden="true">📦</span>
+                            <span>Изменить план</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- No Subscription -->
+                <div class="content-card" id="no-subscription-card" hidden>
+                    <div class="empty-state">
+                        <div class="empty-icon">💚</div>
+                        <div class="empty-title">У вас нет активной подписки</div>
+                        <div class="empty-text">Оформите подписку для доступа к ценам фермеров и еженедельной доставке</div>
+                        <a href="index.html#membership" class="btn-save mt-actions">
+                            <span aria-hidden="true">🥕</span>
+                            <span>Выбрать план</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">📅</span>
+                            Преимущества подписки
+                        </h2>
+                    </div>
+                    
+                    <div class="benefits-list">
+                        <div class="order-item">
+                            <div class="order-icon">🚚</div>
+                            <div class="order-details">
+                                <div class="order-name">4 доставки в месяц</div>
+                                <div class="order-meta">Каждую пятницу свежий бокс</div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-icon">💰</div>
+                            <div class="order-details">
+                                <div class="order-name">Цены фермеров</div>
+                                <div class="order-meta">Экономия до 40% на продуктах</div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-icon">♻️</div>
+                            <div class="order-details">
+                                <div class="order-name">Эко-коробка</div>
+                                <div class="order-meta">Многоразовая деревянная тара</div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-icon">🥗</div>
+                            <div class="order-details">
+                                <div class="order-name">Консультации нутрициолога</div>
+                                <div class="order-meta">Планы питания для здоровья</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Настройки</h1>
+                    <p class="dashboard-subtitle">Управление профилем и предпочтениями</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">👤</span>
+                            Личная информация
+                        </h2>
+                    </div>
+                    
+                    <div id="settings-form">
+                        <div class="form-group">
+                            <label class="form-label" for="settings-name">ФИО</label>
+                            <input type="text" id="settings-name" class="form-input" placeholder="Иванов Иван Иванович">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="settings-email">Email</label>
+                                <input type="email" id="settings-email" class="form-input" placeholder="ivan@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="settings-phone">Телефон</label>
+                                <input type="tel" id="settings-phone" class="form-input" placeholder="+420 XXX XXX XXX">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="settings-address">Адрес доставки</label>
+                            <input type="text" id="settings-address" class="form-input" placeholder="Улица, дом, квартира, город">
+                        </div>
+
+                        <button type="button" class="btn-save" onclick="saveSettings()">
+                            <span aria-hidden="true">✓</span>
+                            <span>Сохранить изменения</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">🔔</span>
+                            Уведомления
+                        </h2>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Email уведомления</div>
+                            <div class="setting-description">Получать новости о доставках на email</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">SMS уведомления</div>
+                            <div class="setting-description">Получать SMS перед доставкой</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Маркетинговые рассылки</div>
+                            <div class="setting-description">Акции и специальные предложения</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <span aria-hidden="true">⚠️</span>
+                            Опасная зона
+                        </h2>
+                    </div>
+
+                    <div class="setting-item">
+                        <div>
+                            <div class="setting-label">Удалить аккаунт</div>
+                            <div class="setting-description">Это действие необратимо удалит все ваши данные</div>
+                        </div>
+                        <button class="btn-danger" onclick="deleteAccount()">
+                            <span aria-hidden="true">🗑️</span>
+                            <span>Удалить</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="pu-dashboard-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-3xl" aria-hidden="true">🥕</span>
+                        <span class="pu-footer-brand">PlantUp Club</span>
+                    </div>
+                    <p class="text-white/80 text-sm">
+                        Прямой доступ к чешским фермерам. Свежие овощи и фрукты без посредников.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Клуб</h4>
+                    <ul class="space-y-2 text-white/80 text-sm">
+                        <li><a href="index.html#membership" class="hover:text-white transition-colors">Членство</a></li>
+                        <li><a href="index.html#farmers" class="hover:text-white transition-colors">Фермеры</a></li>
+                        <li><a href="index.html#how-it-works" class="hover:text-white transition-colors">Как работает</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Информация</h4>
+                    <ul class="space-y-2 text-white/80 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">О нас</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Доставка</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Районы доставки</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Holešovice</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Vinohrady</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Žižkov</span>
+                        </span>
+                        <span class="inline-flex items-center space-x-1 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-medium text-white">
+                            <span>📍</span>
+                            <span>Dejvice</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eco Counter -->
+            <div class="border-t border-white/20 pt-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center">
+                    <div class="text-5xl mb-4" aria-hidden="true">♻️</div>
+                    <h3 class="text-2xl font-bold mb-2">Эко-счетчик</h3>
+                    <p class="text-white/80 mb-4">Наши клиенты в Праге уже сэкономили</p>
+                    <div class="text-6xl font-extrabold pu-footer-eco-value">
+                        <span id="eco-counter">12450</span>
+                    </div>
+                    <p class="text-lg text-white/80 mt-2">пластиковых пакетов 🌍</p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
+                <p>© 2026 PlantUp Praha. Všechna práva vyhrazena. S láskou 💚 pro farmáře a zákazníky.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ферма — PlantUp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .farm-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .farm-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(132, 169, 60, 0.12);
+            border: 1px solid rgba(132, 169, 60, 0.1);
+        }
+
+        .farm-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .farm-icon {
+            font-size: 5rem;
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .farm-details {
+            flex: 1;
+        }
+
+        .farm-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .farm-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .farm-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .farm-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .farm-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            -o-object-fit: cover;
+               object-fit: cover;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #84A93C;
+        }
+
+        .product-unit {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .btn-add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #84A93C 0%, #6B8A31 100%);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-add-to-cart:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(132, 169, 60, 0.3);
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #84A93C;
+        }
+
+        @media (max-width: 768px) {
+            .farm-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .farm-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/styles-DX17wzzM.js"></script>
+  <script type="module" crossorigin src="/assets/auth-CQpDYLA_.js"></script>
+  <script type="module" crossorigin src="/assets/dom-ernDEBDM.js"></script>
+  <script type="module" crossorigin src="/assets/ui-Iu01fIn2.js"></script>
+  <script type="module" crossorigin src="/assets/farms-J7DqhLgw.js"></script>
+  <script type="module" crossorigin src="/assets/farm-detail-ae7Xa-Kf.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/styles-BjIe6zCh.css">
+</head>
+<body class="bg-[#FDFBF7] min-h-screen">
+    <!-- Header -->
+    <nav class="sticky-nav" role="navigation" aria-label="Основная навигация">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-12 sm:h-14">
+                <a href="index.html" class="flex items-center gap-1.5 flex-shrink-0">
+                    <span class="text-xl sm:text-2xl" aria-hidden="true">🥕</span>
+                    <span class="text-base sm:text-lg font-bold" style="color: var(--earth)">PlantUp</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8 flex-shrink-0">
+                    <a href="index.html#membership" class="nav-link font-medium text-sm">Клуб</a>
+                    <a href="index.html#farmers" class="nav-link font-medium text-sm">Фермеры</a>
+                    <a href="index.html#how-it-works" class="nav-link font-medium text-sm">Как работает</a>
+                    <a href="index.html#marketplace" class="nav-link font-medium text-sm">Витрина</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-2 sm:gap-3 flex-shrink-0" id="auth-buttons">
+                    <!-- Заполняется JS -->
+                </div>
+
+                <div class="flex items-center gap-0.5 md:hidden">
+                    <button id="mobile-menu-btn" class="p-1.5 text-gray-600 hover:text-[var(--olive)] transition-colors" aria-label="Открыть меню">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4">
+            <div class="flex flex-col space-y-3">
+                <a href="index.html#membership" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Клуб</a>
+                <a href="index.html#farmers" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Фермеры</a>
+                <a href="index.html#how-it-works" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Как работает</a>
+                <a href="index.html#marketplace" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Витрина</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="farm-detail-container">
+        <!-- Back Link -->
+        <a href="index.html#farmers" class="back-link">
+            <span aria-hidden="true">←</span>
+            <span>Назад к фермерам</span>
+        </a>
+
+        <!-- Farm Header -->
+        <div class="farm-header">
+            <div class="farm-info">
+                <div class="farm-icon" id="farm-icon">🏡</div>
+                <div class="farm-details">
+                    <h1 class="farm-name" id="farm-name">Название фермы</h1>
+                    <div class="farm-rating">
+                        <span class="stars" id="farm-stars">★★★★★</span>
+                        <span id="farm-rating-value">4.9</span>
+                        <span id="farm-reviews-count">(0 отзывов)</span>
+                    </div>
+                    <p class="farm-description" id="farm-description">Описание фермы</p>
+                    <div class="farm-meta">
+                        <div class="farm-meta-item">
+                            <span aria-hidden="true">👨‍🌾</span>
+                            <span id="farm-owner">Владелец</span>
+                        </div>
+                        <div class="farm-meta-item">
+                            <span aria-hidden="true">📍</span>
+                            <span id="farm-location">Расположение</span>
+                        </div>
+                        <div class="farm-meta-item">
+                            <span aria-hidden="true">📦</span>
+                            <span id="farm-products-count">0 товаров</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem;">
+            🛒 Товары от этой фермы
+        </h2>
+        <div class="products-grid" id="products-grid">
+            <!-- Товары загружаются через JS -->
+        </div>
+
+        <!-- Farm Photos Gallery -->
+        <div id="farm-photos-section" style="margin-top: 3rem;">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem;">
+                📸 Галерея фермы
+            </h2>
+            <div class="photos-grid" id="farm-detail-photos-grid">
+                <!-- Фото загружаются через JS -->
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section" style="margin-top: 3rem; background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 8px 32px rgba(132, 169, 60, 0.12);">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1.5rem;">
+                💬 Отзывы о ферме
+            </h2>
+
+            <!-- Форма отзыва -->
+            <div id="review-form-container" class="review-form-container" style="margin-bottom: 2rem; padding: 1.5rem; background: #FDFBF7; border-radius: 1rem; border: 1px solid rgba(132, 169, 60, 0.2);">
+                <!-- Заполняется JS -->
+            </div>
+
+            <!-- Список отзывов -->
+            <div id="reviews-list" class="reviews-list" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Отзывы загружаются через JS -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 z-[300] hidden items-center justify-center p-4" onclick="closeProductModal(event)">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
+            <div class="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-xl font-bold" style="color: var(--earth)">Детали товара</h3>
+                <button onclick="closeProductModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors" aria-label="Закрыть">×</button>
+            </div>
+            <div class="p-6">
+                <div id="product-modal-content">
+                    <!-- Заполняется JS -->
+                </div>
+                
+                <!-- Reviews Section in Modal -->
+                <div class="mt-6 pt-6 border-t border-gray-100">
+                    <h4 class="text-lg font-bold mb-4" style="color: var(--earth)">💬 Отзывы о товаре</h4>
+                    <div id="product-reviews-list" class="space-y-3 mb-4">
+                        <!-- Отзывы заполняются JS -->
+                    </div>
+                    
+                    <!-- Review Form -->
+                    <div id="product-review-form" class="bg-[#FDFBF7] p-4 rounded-xl">
+                        <!-- Заполняется JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

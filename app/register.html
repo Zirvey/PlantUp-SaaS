@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Вход и регистрация — PlantUp</title>
+  <script type="module" crossorigin src="/assets/register-Ktw6TL-I.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-DX17wzzM.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-BjIe6zCh.css">
+  <link rel="stylesheet" crossorigin href="/assets/tokens-Dgz6gFMb.css">
+  <link rel="stylesheet" crossorigin href="/assets/app-shell-DUJ8vege.css">
+</head>
+<body class="pu-shell">
+
+    <header class="pu-nav" role="navigation" aria-label="Основная навигация">
+        <div class="pu-nav__inner">
+            <a href="index.html" class="pu-nav__logo">
+                <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#07503f"/>
+                </svg>
+                <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
+            </a>
+            <nav class="pu-nav__links" aria-label="Разделы">
+                <a href="index.html#membership" class="pu-nav__link">Клуб</a>
+                <a href="index.html#farmers" class="pu-nav__link">Фермеры</a>
+                <a href="index.html#marketplace" class="pu-nav__link">Витрина</a>
+            </nav>
+            <div class="pu-nav__actions">
+                <a href="index.html" class="pu-btn pu-btn--ghost">← На главную</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="pu-auth-page">
+        <aside class="pu-auth-aside" aria-hidden="true">
+            <div class="pu-auth-aside__content">
+                <p class="pu-auth-aside__eyebrow">PlantUp Club</p>
+                <h2 class="pu-auth-aside__title">Свежие продукты прямо от фермеров</h2>
+                <p class="pu-auth-aside__lead">Присоединяйтесь к клубу — доставка по Праге каждую пятницу, без посредников и лишнего пластика.</p>
+                <ul class="pu-auth-aside__list">
+                    <li>
+                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
+                        <span>До 40% экономии на сезонные овощи</span>
+                    </li>
+                    <li>
+                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
+                        <span>10% прибыли — на посадку деревьев</span>
+                    </li>
+                    <li>
+                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
+                        <span>Holešovice · Žižkov · Dejvice</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="pu-auth-main">
+            <div class="pu-auth-card">
+                <header class="pu-auth-card__header">
+                    <h1 class="pu-auth-card__title">С возвращением!</h1>
+                    <p class="pu-auth-card__subtitle">Войдите или зарегистрируйтесь для продолжения</p>
+                </header>
+
+                <div class="pu-auth-tabs auth-tabs" role="tablist" aria-label="Выберите вашу роль" data-active="buyer">
+                    <button type="button" class="auth-tab active" onclick="switchRole('buyer')" role="tab" aria-selected="true" id="tab-buyer">
+                        <span class="auth-tab__label">Участник</span>
+                    </button>
+                    <button type="button" class="auth-tab" onclick="switchRole('farmer')" role="tab" aria-selected="false" id="tab-farmer">
+                        <span class="auth-tab__label">Фермер</span>
+                    </button>
+                </div>
+
+                <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email" class="form-label">Email</label>
+                        <input type="email" id="login-email" class="form-input" placeholder="ivan@example.com" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="form-label">Пароль</label>
+                        <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Запомнить меня</label>
+                    </div>
+                    <button type="submit" class="btn-submit">Войти</button>
+                    <div class="auth-divider"><span>или</span></div>
+                    <div class="auth-footer">
+                        <p>Нет аккаунта? <a href="#" onclick="switchToRegister(); return false;">Зарегистрироваться</a></p>
+                    </div>
+                </form>
+
+                <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="register-name" class="form-label">ФИО</label>
+                        <input type="text" id="register-name" class="form-input" placeholder="Иванов Иван Иванович" autocomplete="name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Email</label>
+                            <input type="email" id="register-email" class="form-input" placeholder="ivan@example.com" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone" class="form-label">Телефон</label>
+                            <input type="tel" id="register-phone" class="form-input" placeholder="+420 XXX XXX XXX" autocomplete="tel" required>
+                        </div>
+                    </div>
+                    <div class="form-group" id="farm-name-group" hidden>
+                        <label for="register-farm" class="form-label">Название фермы</label>
+                        <input type="text" id="register-farm" class="form-input" placeholder="Ваша ферма">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password" class="form-label">Пароль</label>
+                        <input type="password" id="register-password" class="form-input" placeholder="Минимум 8 символов" minlength="8" autocomplete="new-password" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree-terms" required>
+                        <label for="agree-terms">Я согласен с <a href="#">условиями использования</a></label>
+                    </div>
+                    <button type="submit" class="btn-submit">Зарегистрироваться</button>
+                    <div class="auth-divider"><span>или</span></div>
+                    <div class="auth-footer">
+                        <p>Уже есть аккаунт? <a href="#" onclick="switchToLogin(); return false;">Войти</a></p>
+                    </div>
+                </form>
+
+                <ul class="pu-auth-trust" aria-label="Гарантии">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Безопасно
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                        Проверено
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Экологично
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function switchToLogin() {
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('register-form').classList.remove('active');
+            const url = new URL(window.location);
+            url.searchParams.delete('mode');
+            window.history.pushState({}, '', url);
+        }
+
+        function switchToRegister() {
+            document.getElementById('login-form').classList.remove('active');
+            document.getElementById('register-form').classList.add('active');
+            const url = new URL(window.location);
+            url.searchParams.set('mode', 'register');
+            window.history.pushState({}, '', url);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mode = new URLSearchParams(window.location.search).get('mode');
+            if (mode === 'register') switchToRegister();
+            else switchToLogin();
+        });
+
+        window.switchRole = window.switchRole || function () {};
+    </script>
+</body>
+</html>
