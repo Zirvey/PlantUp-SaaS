@@ -1,13 +1,18 @@
 # Screenshots
 
-Put product captures here (and mirror into `docs/screenshots/` if you keep both).
+Product captures for the sales kit (`assets/screenshots/`) and demo hub thumbs.
 
 Recommended size: ~1440×900 desktop PNGs.
 
-```bash
-# After starting PlantUp locally (npm run dev):
-# open pages and save screenshots named:
-# 01-homepage.png … 07-farm-detail.png, hero-banner.png
+```
+01-homepage.png
+02-register.png
+03-member-dashboard.png
+04-farmer-dashboard.png
+05-admin-dashboard.png
+06-checkout.png
+07-farm-detail.png
+hero-banner.png
 ```
 
-Refresh these before a serious pitch — placeholders may still show older BioMarket UI.
+Refresh from the built `app/` demo before a serious pitch.
