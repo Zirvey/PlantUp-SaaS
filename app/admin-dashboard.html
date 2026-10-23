@@ -7,34 +7,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/admin-BVlO4_qo.js"></script>
+  <script type="module" crossorigin src="./assets/admin-Cgojl5yS.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="./assets/i18n-DBMcqbrP.js">
-  <link rel="modulepreload" crossorigin href="./assets/auth-BQFZTqTF.js">
+  <link rel="modulepreload" crossorigin href="./assets/mobile-nav-D-62_0C6.js">
+  <link rel="modulepreload" crossorigin href="./assets/auth-DknWqdUn.js">
   <link rel="modulepreload" crossorigin href="./assets/icons-DrlJFkwI.js">
   <link rel="modulepreload" crossorigin href="./assets/loadingStates-C7Iu2bq4.js">
   <link rel="modulepreload" crossorigin href="./assets/toast-CPO50Uqk.js">
-  <link rel="stylesheet" crossorigin href="./assets/i18n-B8sHwuui.css">
+  <link rel="stylesheet" crossorigin href="./assets/mobile-nav-DO88Iq3_.css">
   <link rel="stylesheet" crossorigin href="./assets/tokens-Bw27OvtD.css">
   <link rel="stylesheet" crossorigin href="./assets/app-shell-CQd6i35n.css">
-  <link rel="stylesheet" crossorigin href="./assets/dashboard-arva-DfXGKoMJ.css">
+  <link rel="stylesheet" crossorigin href="./assets/dashboard-arva-DHS6emPb.css">
 </head>
-<body class="pu-shell">
-    <header class="pu-nav" role="navigation" data-i18n-aria="admin.navLabel">
-        <div class="pu-nav__inner">
-            <a href="index.html" class="pu-nav__logo">
-                <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+<body class="pu-shell has-arva-nav">
+    <header class="arva-nav arva-nav--scrolled" role="navigation" data-i18n-aria="admin.navLabel">
+        <div class="arva-nav__inner">
+            <nav class="arva-nav__left" data-i18n-aria="nav.sections">
+                <a href="register.html?role=farmer" class="arva-nav__link" data-farmer-entry data-i18n="nav.forFarmers">Pro farmáře</a>
+                <a href="index.html#membership" class="arva-nav__link" data-i18n="nav.forClients">Pro odběratele</a>
+                <a href="index.html#farmers" class="arva-nav__link" data-i18n="nav.forPartners">Pro partnery</a>
+                <a href="index.html#how-it-works" class="arva-nav__link" data-i18n="nav.ourServices">Naše služby</a>
+            </nav>
+
+            <a href="index.html" class="arva-nav__logo" data-i18n-aria="nav.home">
+                <svg class="arva-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                     <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
-                    <path d="M12 26 L16 6 L26 26 Z" fill="#07503f"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#ffffff"/>
                 </svg>
-                <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
+                <span class="arva-nav__logo-text" aria-hidden="true"><span class="arva-brand__cap">P</span>lant<span class="arva-brand__cap">U</span>p</span>
             </a>
-            <span class="pu-nav__user" id="admin-user-name" data-i18n="admin.adminLabel">Admin</span>
-            <div class="pu-nav__actions">
-                <button type="button" onclick="logout()" class="pu-btn pu-btn--ghost" data-i18n="admin.logOut" data-i18n-aria="admin.logOut">Odhlásit se</button>
+
+            <div class="arva-nav__right">
+                <a href="index.html#about" class="arva-nav__link arva-nav__link--right" data-i18n="nav.aboutUs">O nás</a>
+                <a href="index.html#marketplace" class="arva-nav__link arva-nav__link--right" data-i18n="nav.resources">Zdroje</a>
+                <span class="arva-nav__link arva-nav__link--right" id="admin-user-name" data-i18n="admin.adminLabel">Admin</span>
+                <button type="button" onclick="logout()" class="arva-btn-touch" data-i18n="admin.logOut" data-i18n-aria="admin.logOut">Odhlásit se</button>
+                <div class="arva-lang-wrap">
+                    <button type="button" class="arva-lang" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown-admin">
+                        <span class="arva-lang__flag" data-lang-flag aria-hidden="true">🇨🇿</span>
+                        <span class="arva-lang__code" data-lang-code>CS</span>
+                        <svg class="arva-lang__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg>
+                    </button>
+                    <div id="lang-dropdown-admin" class="arva-lang-dropdown" data-lang-dropdown hidden role="listbox">
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="cs" role="option">🇨🇿 Čeština</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="ru" role="option">🇷🇺 Русский</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="en" role="option">🇬🇧 English</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="arva-nav__menu-btn" data-i18n-aria="nav.openMenu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="arva-menu-icon" aria-hidden="true">
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </header>
+
+    <div id="mobile-menu-backdrop" class="arva-mobile-drawer__backdrop" hidden aria-hidden="true"></div>
+    <aside id="mobile-menu" class="arva-mobile-drawer" role="dialog" data-i18n-aria="nav.openMenu" aria-modal="true" hidden>
+        <div class="arva-mobile-drawer__header">
+            <p class="arva-mobile-drawer__title" data-i18n="nav.menuTitle">Menu</p>
+            <button type="button" class="arva-mobile-drawer__close" data-mobile-nav-close data-i18n-aria="nav.closeMenu">
+                <span class="arva-menu-icon is-active" aria-hidden="true">
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                </span>
+            </button>
+        </div>
+        <nav class="arva-mobile-drawer__nav" data-i18n-aria="nav.sections">
+            <a href="index.html#marketplace" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.resources">Zdroje</a>
+            <a href="index.html#farmers" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.forPartners">Pro partnery</a>
+            <a href="index.html#how-it-works" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.ourServices">Naše služby</a>
+            <a href="index.html#about" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.aboutUs">O nás</a>
+            <a href="index.html" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.toHome">Domů</a>
+            <button type="button" onclick="logout()" class="arva-mobile-drawer__link arva-mobile-drawer__link--button" data-i18n="admin.logOut">Odhlásit se</button>
+        </nav>
+        <div class="arva-mobile-drawer__footer">
+            <p class="arva-mobile-drawer__lang-label" data-i18n="nav.language">Jazyk</p>
+            <div class="arva-lang-group" data-lang-group role="radiogroup" data-i18n-aria="nav.language">
+                <button type="button" class="arva-lang-group__btn" data-lang-option="cs" role="radio" aria-checked="true">🇨🇿 CS</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="ru" role="radio" aria-checked="false">🇷🇺 RU</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="en" role="radio" aria-checked="false">🇬🇧 EN</button>
+            </div>
+        </div>
+    </aside>
 
     <!-- Admin Dashboard -->
     <div class="admin-dashboard">
@@ -129,25 +188,25 @@
 
                 <div class="content-card">
                     <div class="card-header">
-                        <h2 class="card-title"><span aria-hidden="true">📊</span> Посещаемость сайта</h2>
+                        <h2 class="card-title"><span aria-hidden="true">📊</span> <span data-i18n="admin.visitsTitle">Návštěvnost webu</span></h2>
                     </div>
-                    <div class="chart-container" id="overview-visits-chart">
-                        Загрузка аналитики...
-                    </div>
-                </div>
-
-                <div class="content-card">
-                    <div class="card-header">
-                        <h2 class="card-title"><span aria-hidden="true">🩺</span> Состояние системы</h2>
-                    </div>
-                    <div id="admin-health-status" class="admin-health-status">
-                        Проверка состояния...
+                    <div class="chart-container" id="overview-visits-chart" data-i18n="admin.visitsLoading">
+                        Načítání analytiky…
                     </div>
                 </div>
 
                 <div class="content-card">
                     <div class="card-header">
-                        <h2 class="card-title"><span aria-hidden="true">🔔</span> Последние действия</h2>
+                        <h2 class="card-title"><span aria-hidden="true">🩺</span> <span data-i18n="admin.healthTitle">Stav systému</span></h2>
+                    </div>
+                    <div id="admin-health-status" class="admin-health-status" data-i18n="admin.healthLoading">
+                        Kontrola stavu…
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2 class="card-title"><span aria-hidden="true">🔔</span> <span data-i18n="admin.activityTitle">Poslední akce</span></h2>
                     </div>
                     <div id="recent-activity">
                         <!-- Загружается через JS -->
