@@ -1,32 +1,35 @@
-/* PlantUp demo hub */
+/* PlantUp demo hub — matches product header green */
 
 :root {
   --forest: #07503f;
+  --forest-deep: #043529;
   --bone: #f1efdf;
   --carrot: #e87722;
   --lime: #e8fe85;
-  --pewter: #6d6d6d;
+  --pewter: #c3cda7;
   --charcoal: #212529;
+  --on-green: #f1efdf;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: Inter, system-ui, sans-serif;
-  background: linear-gradient(180deg, #f7f5eb, var(--bone));
-  color: var(--charcoal);
+  background: var(--forest);
+  color: var(--on-green);
   min-height: 100vh;
 }
 
-a { color: var(--forest); text-decoration: none; }
+a { color: var(--lime); text-decoration: none; }
 
 .demo-banner {
-  background: var(--forest);
+  background: var(--forest-deep);
   color: var(--lime);
   text-align: center;
   padding: 0.65rem 1rem;
   font-size: 0.85rem;
   font-weight: 500;
+  border-bottom: 1px solid rgba(232, 254, 133, 0.12);
 }
 
 .demo-banner a {
@@ -54,12 +57,13 @@ a { color: var(--forest); text-decoration: none; }
   display: block;
   object-fit: cover;
   flex-shrink: 0;
+  background: transparent;
 }
 
 .brand-name {
   font-family: Fraunces, Georgia, serif;
   font-size: 1.6rem;
-  color: var(--forest);
+  color: #fff;
   font-weight: 600;
 }
 
@@ -71,7 +75,7 @@ a { color: var(--forest); text-decoration: none; }
 }
 
 .lead {
-  color: var(--pewter);
+  color: rgba(241, 239, 223, 0.78);
   max-width: 40rem;
   line-height: 1.55;
 }
@@ -87,33 +91,22 @@ a { color: var(--forest); text-decoration: none; }
 .demo-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 1px solid rgba(7, 80, 63, 0.12);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(232, 254, 133, 0.14);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(7, 80, 63, 0.06);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .demo-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(7, 80, 63, 0.12);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
 }
 
 .demo-card.featured {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
 }
-
-.demo-card img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  background: #c3cda7;
-}
-
-.demo-card.featured img { aspect-ratio: auto; height: 100%; min-height: 220px; }
 
 .demo-card > div { padding: 1.1rem 1.2rem 1.25rem; }
 
@@ -125,7 +118,7 @@ a { color: var(--forest); text-decoration: none; }
 }
 
 .demo-card p {
-  color: var(--pewter);
+  color: #6d6d6d;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
@@ -140,9 +133,11 @@ a { color: var(--forest); text-decoration: none; }
 .demo-foot {
   text-align: center;
   padding: 0 1rem 2.5rem;
-  color: var(--pewter);
+  color: rgba(241, 239, 223, 0.65);
   font-size: 0.85rem;
 }
+
+.demo-foot a { color: var(--lime); }
 
 @media (max-width: 720px) {
   .demo-card.featured { grid-template-columns: 1fr; }
