@@ -1,0 +1,1 @@
+const e="biomarket_open_browse";function r(){try{return new URLSearchParams(window.location.search).get("browse")==="1"}catch{return!1}}function t(){if(typeof window>"u")return!1;if(r()){try{sessionStorage.setItem(e,"1")}catch{}return!0}try{return sessionStorage.getItem(e)==="1"}catch{return!1}}export{t as isOpenBrowse};

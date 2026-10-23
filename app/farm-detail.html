@@ -1,336 +1,156 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="cs" data-i18n-title-key="farmDetail.pageTitle">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ферма — PlantUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Farma — PlantUp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .farm-detail-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .farm-header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(132, 169, 60, 0.12);
-            border: 1px solid rgba(132, 169, 60, 0.1);
-        }
-
-        .farm-info {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .farm-icon {
-            font-size: 5rem;
-            flex-shrink: 0;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            border-radius: 1.5rem;
-            overflow: hidden;
-        }
-
-        .farm-details {
-            flex: 1;
-        }
-
-        .farm-name {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .farm-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .stars {
-            color: #fbbf24;
-        }
-
-        .farm-description {
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .farm-meta {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .farm-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6b7280;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            -o-object-fit: cover;
-               object-fit: cover;
-            border-radius: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-name {
-            font-weight: 600;
-            font-size: 1.125rem;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #84A93C;
-        }
-
-        .product-unit {
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-
-        .btn-add-to-cart {
-            width: 100%;
-            background: linear-gradient(135deg, #84A93C 0%, #6B8A31 100%);
-            color: white;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .btn-add-to-cart:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(132, 169, 60, 0.3);
-        }
-
-        .no-products {
-            text-align: center;
-            padding: 3rem;
-            color: #6b7280;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #6b7280;
-            text-decoration: none;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .back-link:hover {
-            color: #84A93C;
-        }
-
-        @media (max-width: 768px) {
-            .farm-info {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .farm-meta {
-                justify-content: center;
-            }
-        }
-    </style>
-  <script type="module" crossorigin src="./assets/styles-DX17wzzM.js"></script>
-  <script type="module" crossorigin src="./assets/auth-CQpDYLA_.js"></script>
-  <script type="module" crossorigin src="./assets/dom-ernDEBDM.js"></script>
-  <script type="module" crossorigin src="./assets/ui-Iu01fIn2.js"></script>
-  <script type="module" crossorigin src="./assets/farms-J7DqhLgw.js"></script>
-  <script type="module" crossorigin src="./assets/farm-detail-ae7Xa-Kf.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/styles-BjIe6zCh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/farmDetail-BFv6804u.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/i18n-DBMcqbrP.js">
+  <link rel="modulepreload" crossorigin href="./assets/mobile-nav-DnBbmY-4.js">
+  <link rel="modulepreload" crossorigin href="./assets/auth-BQFZTqTF.js">
+  <link rel="modulepreload" crossorigin href="./assets/subscriptionService-CnS6GAXd.js">
+  <link rel="modulepreload" crossorigin href="./assets/ui-CwIYb2mk.js">
+  <link rel="modulepreload" crossorigin href="./assets/farms-KeF2EHQe.js">
+  <link rel="modulepreload" crossorigin href="./assets/icons-DrlJFkwI.js">
+  <link rel="modulepreload" crossorigin href="./assets/loadingStates-C7Iu2bq4.js">
+  <link rel="modulepreload" crossorigin href="./assets/toast-CPO50Uqk.js">
+  <link rel="stylesheet" crossorigin href="./assets/i18n-B8sHwuui.css">
+  <link rel="stylesheet" crossorigin href="./assets/mobile-nav-B9stuIgv.css">
+  <link rel="stylesheet" crossorigin href="./assets/tokens-Bw27OvtD.css">
+  <link rel="stylesheet" crossorigin href="./assets/app-shell-CQd6i35n.css">
 </head>
-<body class="bg-[#FDFBF7] min-h-screen">
-    <!-- Header -->
-    <nav class="sticky-nav" role="navigation" aria-label="Основная навигация">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-12 sm:h-14">
-                <a href="index.html" class="flex items-center gap-1.5 flex-shrink-0">
-                    <span class="text-xl sm:text-2xl" aria-hidden="true">🥕</span>
-                    <span class="text-base sm:text-lg font-bold" style="color: var(--earth)">PlantUp</span>
-                </a>
+<body class="pu-shell has-arva-nav">
+    <header class="arva-nav arva-nav--scrolled" role="navigation" data-i18n-aria="nav.mainNav">
+        <div class="arva-nav__inner">
+            <nav class="arva-nav__left" data-i18n-aria="nav.sections">
+                <a href="register.html?role=farmer" class="arva-nav__link" data-farmer-entry data-i18n="nav.forFarmers">Pro farmáře</a>
+                <a href="index.html#membership" class="arva-nav__link" data-i18n="nav.forClients">Pro odběratele</a>
+                <a href="index.html#farmers" class="arva-nav__link" data-i18n="nav.forPartners">Pro partnery</a>
+                <a href="index.html#how-it-works" class="arva-nav__link" data-i18n="nav.ourServices">Naše služby</a>
+            </nav>
 
-                <div class="hidden md:flex items-center space-x-8 flex-shrink-0">
-                    <a href="index.html#membership" class="nav-link font-medium text-sm">Клуб</a>
-                    <a href="index.html#farmers" class="nav-link font-medium text-sm">Фермеры</a>
-                    <a href="index.html#how-it-works" class="nav-link font-medium text-sm">Как работает</a>
-                    <a href="index.html#marketplace" class="nav-link font-medium text-sm">Витрина</a>
-                </div>
+            <a href="index.html" class="arva-nav__logo" data-i18n-aria="nav.home">
+                <svg class="arva-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#ffffff"/>
+                </svg>
+                <span class="arva-nav__logo-text" aria-hidden="true"><span class="arva-brand__cap">P</span>lant<span class="arva-brand__cap">U</span>p</span>
+            </a>
 
-                <div class="hidden md:flex items-center gap-2 sm:gap-3 flex-shrink-0" id="auth-buttons">
-                    <!-- Заполняется JS -->
-                </div>
-
-                <div class="flex items-center gap-0.5 md:hidden">
-                    <button id="mobile-menu-btn" class="p-1.5 text-gray-600 hover:text-[var(--olive)] transition-colors" aria-label="Открыть меню">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+            <div class="arva-nav__right">
+                <a href="index.html#membership" class="arva-nav__link arva-nav__link--right" data-i18n="footer.membership">Předplatné</a>
+                <a href="index.html#farmers" class="arva-nav__link arva-nav__link--right" data-i18n="footer.farmers">Farmáři</a>
+                <a href="index.html#marketplace" class="arva-nav__link arva-nav__link--right" data-i18n="nav.resources">Vitrína</a>
+                <a href="index.html#how-it-works" class="arva-nav__link arva-nav__link--right" data-i18n="footer.howWorks">Jak to funguje</a>
+                <div class="arva-lang-wrap">
+                    <button type="button" class="arva-lang" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown-farm">
+                        <span class="arva-lang__flag" data-lang-flag aria-hidden="true">🇨🇿</span>
+                        <span class="arva-lang__code" data-lang-code>CS</span>
+                        <svg class="arva-lang__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg>
                     </button>
+                    <div id="lang-dropdown-farm" class="arva-lang-dropdown" data-lang-dropdown hidden role="listbox">
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="cs" role="option">🇨🇿 Čeština</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="ru" role="option">🇷🇺 Русский</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="en" role="option">🇬🇧 English</button>
+                    </div>
                 </div>
+                <button id="mobile-menu-btn" class="arva-nav__menu-btn" data-i18n-aria="nav.openMenu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="arva-menu-icon" aria-hidden="true">
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                    </span>
+                </button>
             </div>
         </div>
+    </header>
 
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4">
-            <div class="flex flex-col space-y-3">
-                <a href="index.html#membership" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Клуб</a>
-                <a href="index.html#farmers" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Фермеры</a>
-                <a href="index.html#how-it-works" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Как работает</a>
-                <a href="index.html#marketplace" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Витрина</a>
+    <div id="mobile-menu-backdrop" class="arva-mobile-drawer__backdrop" hidden aria-hidden="true"></div>
+    <aside id="mobile-menu" class="arva-mobile-drawer" role="dialog" data-i18n-aria="nav.openMenu" aria-modal="true" hidden>
+        <div class="arva-mobile-drawer__header">
+            <p class="arva-mobile-drawer__title" data-i18n="nav.menuTitle">Menu</p>
+            <button type="button" class="arva-mobile-drawer__close" data-mobile-nav-close data-i18n-aria="nav.closeMenu">
+                <span class="arva-menu-icon is-active" aria-hidden="true">
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                </span>
+            </button>
+        </div>
+        <nav class="arva-mobile-drawer__nav" data-i18n-aria="nav.sections">
+            <a href="index.html#membership" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="footer.membership">Předplatné</a>
+            <a href="index.html#farmers" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="footer.farmers">Farmáři</a>
+            <a href="index.html#marketplace" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.resources">Vitrína</a>
+            <a href="index.html#how-it-works" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="footer.howWorks">Jak to funguje</a>
+            <a href="index.html" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.toHome">Domů</a>
+            <div id="mobile-auth-buttons"></div>
+        </nav>
+        <div class="arva-mobile-drawer__footer">
+            <p class="arva-mobile-drawer__lang-label" data-i18n="nav.language">Jazyk</p>
+            <div class="arva-lang-group" data-lang-group role="radiogroup" data-i18n-aria="nav.language">
+                <button type="button" class="arva-lang-group__btn" data-lang-option="cs" role="radio" aria-checked="true">🇨🇿 CS</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="ru" role="radio" aria-checked="false">🇷🇺 RU</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="en" role="radio" aria-checked="false">🇬🇧 EN</button>
             </div>
         </div>
-    </nav>
+    </aside>
 
-    <!-- Main Content -->
-    <div class="farm-detail-container">
-        <!-- Back Link -->
-        <a href="index.html#farmers" class="back-link">
+    <main class="pu-farm-detail">
+        <a href="index.html#farmers" class="pu-farm-detail__back">
             <span aria-hidden="true">←</span>
-            <span>Назад к фермерам</span>
+            <span data-i18n="farmDetail.back">Zpět k farmářům</span>
         </a>
 
-        <!-- Farm Header -->
-        <div class="farm-header">
-            <div class="farm-info">
-                <div class="farm-icon" id="farm-icon">🏡</div>
+        <div class="pu-farm-detail__header farm-header">
+            <div class="pu-farm-detail__info farm-info">
+                <div class="pu-farm-detail__icon farm-icon" id="farm-icon" aria-hidden="true">
+                    <svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
                 <div class="farm-details">
-                    <h1 class="farm-name" id="farm-name">Название фермы</h1>
-                    <div class="farm-rating">
-                        <span class="stars" id="farm-stars">★★★★★</span>
-                        <span id="farm-rating-value">4.9</span>
-                        <span id="farm-reviews-count">(0 отзывов)</span>
+                    <h1 class="pu-farm-detail__name farm-name" id="farm-name">Načítání farmy…</h1>
+                    <div class="pu-farm-detail__rating farm-rating">
+                        <span class="pu-farm-detail__stars stars" id="farm-stars">★★★★★</span>
+                        <span id="farm-rating-value">—</span>
+                        <span id="farm-reviews-count">(0 recenzí)</span>
                     </div>
-                    <p class="farm-description" id="farm-description">Описание фермы</p>
-                    <div class="farm-meta">
-                        <div class="farm-meta-item">
-                            <span aria-hidden="true">👨‍🌾</span>
-                            <span id="farm-owner">Владелец</span>
+                    <p class="pu-farm-detail__description farm-description" id="farm-description"></p>
+                    <div class="pu-farm-detail__meta farm-meta">
+                        <div class="pu-farm-detail__meta-item farm-meta-item">
+                            <span aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                            <span id="farm-owner">Provozovatel</span>
                         </div>
-                        <div class="farm-meta-item">
-                            <span aria-hidden="true">📍</span>
-                            <span id="farm-location">Расположение</span>
+                        <div class="pu-farm-detail__meta-item farm-meta-item">
+                            <span aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <span id="farm-location">Lokalita</span>
                         </div>
-                        <div class="farm-meta-item">
-                            <span aria-hidden="true">📦</span>
-                            <span id="farm-products-count">0 товаров</span>
+                        <div class="pu-farm-detail__meta-item farm-meta-item">
+                            <span aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+                            <span id="farm-products-count">0 produktů</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Products Section -->
-        <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem;">
-            🛒 Товары от этой фермы
-        </h2>
-        <div class="products-grid" id="products-grid">
-            <!-- Товары загружаются через JS -->
-        </div>
+        <h2 class="pu-farm-detail__section-title" data-i18n="farmDetail.products">Produkty z této farmy</h2>
+        <div class="pu-farm-detail__products products-grid" id="products-grid"></div>
 
-        <!-- Farm Photos Gallery -->
         <div id="farm-photos-section" style="margin-top: 3rem;">
-            <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1rem;">
-                📸 Галерея фермы
-            </h2>
-            <div class="photos-grid" id="farm-detail-photos-grid">
-                <!-- Фото загружаются через JS -->
-            </div>
+            <h2 class="pu-farm-detail__section-title" data-i18n="farmDetail.gallery">Galerie farmy</h2>
+            <div class="photos-grid" id="farm-detail-photos-grid"></div>
         </div>
 
-        <!-- Reviews Section -->
-        <div class="reviews-section" style="margin-top: 3rem; background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 8px 32px rgba(132, 169, 60, 0.12);">
-            <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 1.5rem;">
-                💬 Отзывы о ферме
-            </h2>
-
-            <!-- Форма отзыва -->
-            <div id="review-form-container" class="review-form-container" style="margin-bottom: 2rem; padding: 1.5rem; background: #FDFBF7; border-radius: 1rem; border: 1px solid rgba(132, 169, 60, 0.2);">
-                <!-- Заполняется JS -->
-            </div>
-
-            <!-- Список отзывов -->
-            <div id="reviews-list" class="reviews-list" style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- Отзывы загружаются через JS -->
-            </div>
+        <div class="pu-farm-detail__reviews reviews-section">
+            <h2 class="pu-farm-detail__section-title" data-i18n="farmDetail.reviews">Recenze partnerů</h2>
+            <div id="review-form-container" class="pu-farm-detail__review-form review-form-container"></div>
+            <div id="reviews-filter-bar" style="margin-bottom: 1rem;"></div>
+            <div id="reviews-list" class="reviews-list" style="display: flex; flex-direction: column; gap: 1rem;"></div>
         </div>
-    </div>
+    </main>
 
-
-    <!-- Product Modal -->
-    <div id="product-modal" class="fixed inset-0 bg-black/60 z-[300] hidden items-center justify-center p-4" onclick="closeProductModal(event)">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onclick="event.stopPropagation()">
-            <div class="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-                <h3 class="text-xl font-bold" style="color: var(--earth)">Детали товара</h3>
-                <button onclick="closeProductModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors" aria-label="Закрыть">×</button>
-            </div>
-            <div class="p-6">
-                <div id="product-modal-content">
-                    <!-- Заполняется JS -->
-                </div>
-                
-                <!-- Reviews Section in Modal -->
-                <div class="mt-6 pt-6 border-t border-gray-100">
-                    <h4 class="text-lg font-bold mb-4" style="color: var(--earth)">💬 Отзывы о товаре</h4>
-                    <div id="product-reviews-list" class="space-y-3 mb-4">
-                        <!-- Отзывы заполняются JS -->
-                    </div>
-                    
-                    <!-- Review Form -->
-                    <div id="product-review-form" class="bg-[#FDFBF7] p-4 rounded-xl">
-                        <!-- Заполняется JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>

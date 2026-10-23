@@ -1,468 +1,275 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="cs" data-i18n-title-key="pay.pageTitle">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оплата подписки — PlantUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Platba předplatného — PlantUp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .checkout-container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem 1rem;
-        }
-
-        .checkout-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .checkout-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .checkout-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(132, 169, 60, 0.12);
-            border: 1px solid rgba(132, 169, 60, 0.1);
-        }
-
-        .checkout-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .checkout-logo {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #84A93C 0%, #6B8A31 100%);
-            border-radius: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
-            box-shadow: 0 4px 16px rgba(132, 169, 60, 0.3);
-        }
-
-        .checkout-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-        }
-
-        .checkout-subtitle {
-            color: #6b7280;
-            font-size: 0.95rem;
-        }
-
-        .order-summary {
-            background: rgba(132, 169, 60, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .order-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(132, 169, 60, 0.1);
-        }
-
-        .order-row:last-child {
-            border-bottom: none;
-        }
-
-        .order-label {
-            color: #6b7280;
-            font-size: 0.9375rem;
-        }
-
-        .order-value {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .order-total {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px solid rgba(132, 169, 60, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .order-total .order-label {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .order-total .order-value {
-            font-size: 1.5rem;
-            color: #84A93C;
-        }
-
-        .payment-methods {
-            margin-bottom: 1.5rem;
-        }
-
-        .payment-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-bottom: 0.75rem;
-        }
-
-        .payment-method:hover {
-            border-color: #84A93C;
-            background: rgba(132, 169, 60, 0.05);
-        }
-
-        .payment-method.selected {
-            border-color: #84A93C;
-            background: rgba(132, 169, 60, 0.1);
-        }
-
-        .payment-method input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            accent-color: #84A93C;
-        }
-
-        .payment-method-info {
-            flex: 1;
-        }
-
-        .payment-method-name {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0.25rem;
-        }
-
-        .payment-method-desc {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        .payment-method-icon {
-            font-size: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
-            font-size: 0.9375rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.75rem;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            background: white;
-            box-sizing: border-box;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #84A93C;
-            box-shadow: 0 0 0 4px rgba(132, 169, 60, 0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        @media (max-width: 640px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .btn-pay {
-            width: 100%;
-            background: linear-gradient(135deg, #84A93C 0%, #6B8A31 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 1rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(132, 169, 60, 0.3);
-        }
-
-        .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(132, 169, 60, 0.4);
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e5e7eb;
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-
-        .security-badge span:first-child {
-            font-size: 1.25rem;
-        }
-
-        .plan-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #84A93C 0%, #6B8A31 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-    </style>
-  <script type="module" crossorigin src="./assets/checkout-BBLNUoYi.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/styles-DX17wzzM.js">
-  <link rel="modulepreload" crossorigin href="./assets/auth-CQpDYLA_.js">
-  <link rel="modulepreload" crossorigin href="./assets/toast-BDydBu1C.js">
-  <link rel="modulepreload" crossorigin href="./assets/dom-ernDEBDM.js">
-  <link rel="stylesheet" crossorigin href="./assets/styles-BjIe6zCh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/checkout-DgkgnvVf.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/i18n-DBMcqbrP.js">
+  <link rel="modulepreload" crossorigin href="./assets/mobile-nav-DnBbmY-4.js">
+  <link rel="modulepreload" crossorigin href="./assets/auth-BQFZTqTF.js">
+  <link rel="modulepreload" crossorigin href="./assets/paymentService-C2GAjMFd.js">
+  <link rel="modulepreload" crossorigin href="./assets/subscriptionService-CnS6GAXd.js">
+  <link rel="modulepreload" crossorigin href="./assets/validator-DFboJljV.js">
+  <link rel="modulepreload" crossorigin href="./assets/toast-CPO50Uqk.js">
+  <link rel="stylesheet" crossorigin href="./assets/i18n-B8sHwuui.css">
+  <link rel="stylesheet" crossorigin href="./assets/mobile-nav-B9stuIgv.css">
+  <link rel="stylesheet" crossorigin href="./assets/checkout-CelbFTIV.css">
+  <link rel="stylesheet" crossorigin href="./assets/tokens-Bw27OvtD.css">
+  <link rel="stylesheet" crossorigin href="./assets/app-shell-CQd6i35n.css">
 </head>
-<body class="bg-[#FDFBF7] min-h-screen">
-    <!-- Header -->
-    <nav class="sticky-nav" role="navigation" aria-label="Основная навигация" style="position: -webkit-sticky; position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(132, 169, 60, 0.1);">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-12 sm:h-14">
-                <a href="index.html" class="flex items-center gap-1.5 flex-shrink-0">
-                    <span class="text-xl sm:text-2xl" aria-hidden="true">🥕</span>
-                    <span class="text-base sm:text-lg font-bold" style="color: var(--earth)">PlantUp</span>
-                </a>
+<body class="pu-shell has-arva-nav">
 
-                <div class="hidden md:flex items-center space-x-8 flex-shrink-0">
-                    <a href="index.html#membership" class="nav-link font-medium text-sm">Клуб</a>
-                    <a href="index.html#farmers" class="nav-link font-medium text-sm">Фермеры</a>
-                    <a href="index.html#how-it-works" class="nav-link font-medium text-sm">Как работает</a>
-                    <a href="index.html#marketplace" class="nav-link font-medium text-sm">Витрина</a>
-                </div>
+    <header class="arva-nav arva-nav--scrolled" role="navigation" data-i18n-aria="nav.mainNav">
+        <div class="arva-nav__inner">
+            <nav class="arva-nav__left" data-i18n-aria="nav.sections">
+                <a href="register.html?role=farmer" class="arva-nav__link" data-farmer-entry data-i18n="nav.forFarmers">Pro farmáře</a>
+                <a href="index.html#membership" class="arva-nav__link" data-i18n="nav.forClients">Pro odběratele</a>
+                <a href="index.html#farmers" class="arva-nav__link" data-i18n="nav.forPartners">Pro partnery</a>
+                <a href="index.html#how-it-works" class="arva-nav__link" data-i18n="nav.ourServices">Naše služby</a>
+            </nav>
 
-                <div class="hidden md:flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                    <button onclick="logout()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap transition-all duration-300 border border-[#84A93C]/20 bg-white text-[#84A93C] hover:border-[#84A93C] hover:bg-[#84A93C] hover:text-white hover:scale-105 shadow-md hover:shadow-lg" aria-label="Выйти">
-                        <span aria-hidden="true">↪️</span>
-                        <span>Выйти</span>
+            <a href="index.html" class="arva-nav__logo" data-i18n-aria="nav.home">
+                <svg class="arva-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#ffffff"/>
+                </svg>
+                <span class="arva-nav__logo-text" aria-hidden="true"><span class="arva-brand__cap">P</span>lant<span class="arva-brand__cap">U</span>p</span>
+            </a>
+
+            <div class="arva-nav__right">
+                <a href="index.html#about" class="arva-nav__link arva-nav__link--right" data-i18n="nav.aboutUs">O nás</a>
+                <a href="index.html#marketplace" class="arva-nav__link arva-nav__link--right" data-i18n="nav.resources">Zdroje</a>
+                <a href="index.html" class="arva-btn-touch" data-i18n="nav.toHome">Domů</a>
+                <div class="arva-lang-wrap">
+                    <button type="button" class="arva-lang" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown-checkout">
+                        <span class="arva-lang__flag" data-lang-flag aria-hidden="true">🇨🇿</span>
+                        <span class="arva-lang__code" data-lang-code>CS</span>
+                        <svg class="arva-lang__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg>
                     </button>
+                    <div id="lang-dropdown-checkout" class="arva-lang-dropdown" data-lang-dropdown hidden role="listbox">
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="cs" role="option">🇨🇿 Čeština</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="ru" role="option">🇷🇺 Русский</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="en" role="option">🇬🇧 English</button>
+                    </div>
                 </div>
-
-                <div class="flex items-center gap-0.5 md:hidden">
-                    <button id="mobile-menu-btn" class="p-1.5 text-gray-600 hover:text-[var(--olive)] transition-colors" aria-label="Открыть меню" aria-expanded="false">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="arva-nav__menu-btn" data-i18n-aria="nav.openMenu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="arva-menu-icon" aria-hidden="true">
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                    </span>
+                </button>
             </div>
         </div>
+    </header>
 
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4">
-            <div class="flex flex-col space-y-3">
-                <a href="index.html#membership" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Клуб</a>
-                <a href="index.html#farmers" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Фермеры</a>
-                <a href="index.html#how-it-works" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Как работает</a>
-                <a href="index.html#marketplace" class="mobile-nav-link px-4 py-2 text-gray-700 hover:text-[var(--olive)] hover:bg-[var(--olive)]/5 rounded-lg transition-colors">Витрина</a>
+    <div id="mobile-menu-backdrop" class="arva-mobile-drawer__backdrop" hidden aria-hidden="true"></div>
+    <aside id="mobile-menu" class="arva-mobile-drawer" role="dialog" data-i18n-aria="nav.openMenu" aria-modal="true" hidden>
+        <div class="arva-mobile-drawer__header">
+            <p class="arva-mobile-drawer__title" data-i18n="nav.menuTitle">Menu</p>
+            <button type="button" class="arva-mobile-drawer__close" data-mobile-nav-close data-i18n-aria="nav.closeMenu">
+                <span class="arva-menu-icon is-active" aria-hidden="true">
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                </span>
+            </button>
+        </div>
+        <nav class="arva-mobile-drawer__nav" data-i18n-aria="nav.sections">
+            <a href="index.html#membership" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.forClients">Pro odběratele</a>
+            <a href="index.html#farmers" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.forPartners">Pro partnery</a>
+            <a href="index.html#how-it-works" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.ourServices">Naše služby</a>
+            <a href="member-dashboard.html" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="pay.backDashboard">Zpět do kabinetu</a>
+            <a href="index.html" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.toHome">Domů</a>
+            <button type="button" onclick="logout()" class="arva-mobile-drawer__link arva-mobile-drawer__link--button" data-i18n="nav.logOut">Odhlásit se</button>
+        </nav>
+        <div class="arva-mobile-drawer__footer">
+            <p class="arva-mobile-drawer__lang-label" data-i18n="nav.language">Jazyk</p>
+            <div class="arva-lang-group" data-lang-group role="radiogroup" data-i18n-aria="nav.language">
+                <button type="button" class="arva-lang-group__btn" data-lang-option="cs" role="radio" aria-checked="true">🇨🇿 CS</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="ru" role="radio" aria-checked="false">🇷🇺 RU</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="en" role="radio" aria-checked="false">🇬🇧 EN</button>
             </div>
         </div>
-    </nav>
+    </aside>
 
-    <!-- Checkout Container -->
-    <div class="checkout-container">
-        <div class="checkout-grid">
-            <!-- Order Summary -->
-            <div class="checkout-card">
-                <div class="checkout-header">
-                    <div class="checkout-logo" aria-hidden="true">📦</div>
-                    <h1 class="checkout-title">Оформление подписки</h1>
-                    <p class="checkout-subtitle">Завершите оформление для доступа к ценам участников</p>
+    <main class="arva-checkout-page">
+        <div class="pu-checkout checkout-container">
+            <div class="pu-checkout__grid checkout-grid">
+                <div class="pu-checkout__card checkout-card">
+                    <div class="pu-checkout__header checkout-header">
+                        <div class="pu-checkout__logo checkout-logo" aria-hidden="true">
+                            <svg width="36" height="36" viewBox="0 0 32 32" fill="none">
+                                <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                                <path d="M12 26 L16 6 L26 26 Z" fill="#fff"/>
+                            </svg>
+                        </div>
+                        <h1 class="pu-checkout__title checkout-title" data-i18n="pay.title">Aktivace B2B předplatného</h1>
+                        <p class="pu-checkout__subtitle checkout-subtitle" data-i18n="pay.subtitle">Po platbě ihned uvidíte farmářské ceny na výloze</p>
+                    </div>
+
+                    <div class="pu-checkout__summary order-summary">
+                        <span class="pu-checkout__plan-badge plan-badge" id="plan-badge">1 měsíc</span>
+
+                        <div class="pu-checkout__row order-row">
+                            <span class="pu-checkout__label order-label" data-i18n="pay.planLabel">Plán předplatného</span>
+                            <span class="pu-checkout__value order-value" id="plan-name">1 měsíc</span>
+                        </div>
+                        <div class="pu-checkout__row order-row">
+                            <span class="pu-checkout__label order-label" data-i18n="pay.periodLabel">Doba přístupu</span>
+                            <span class="pu-checkout__value order-value" id="plan-period">30 dní</span>
+                        </div>
+                        <div class="pu-checkout__row order-row">
+                            <span class="pu-checkout__label order-label" data-i18n="pay.savingsLabel">Úspora vs měsíčně</span>
+                            <span class="pu-checkout__value order-value" id="plan-savings">—</span>
+                        </div>
+                        <div class="pu-checkout__total order-total">
+                            <span class="pu-checkout__label order-label" data-i18n="pay.totalLabel">Celkem k úhradě</span>
+                            <span class="pu-checkout__value order-value" id="plan-price">560 Kč</span>
+                        </div>
+                    </div>
+
+                    <ul class="pu-checkout__benefits">
+                        <li data-i18n="pay.benefit1">✓ Přístup k členským cenám farmářů</li>
+                        <li data-i18n="pay.benefit2">✓ Velkoobchodní objednávky pro váš byznys</li>
+                        <li data-i18n="pay.benefit3">✓ Kabinet odběratele a historie dodávek</li>
+                    </ul>
+
+                    <div class="pu-checkout__security security-badge">
+                        <span aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                        <span data-i18n="pay.secure">Platba přes Comgate · zabezpečené spojení</span>
+                    </div>
                 </div>
 
-                <div class="order-summary">
-                    <span class="plan-badge" id="plan-badge">1 месяц</span>
-                    
-                    <div class="order-row">
-                        <span class="order-label">План подписки</span>
-                        <span class="order-value" id="plan-name">1 месяц</span>
+                <div class="pu-checkout__card checkout-card">
+                    <h2 class="pu-checkout__title checkout-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;" data-i18n="pay.methodTitle">Způsob platby</h2>
+
+                    <div class="payment-methods">
+                        <label class="pu-checkout__method payment-method selected">
+                            <input type="radio" name="payment" value="card" checked>
+                            <span class="pu-checkout__method-icon payment-method-icon" aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></span>
+                            <div class="payment-method-info">
+                                <div class="pu-checkout__method-name payment-method-name" data-i18n="pay.card">Platební karta</div>
+                                <div class="pu-checkout__method-desc payment-method-desc">Visa, Mastercard, Maestro</div>
+                            </div>
+                        </label>
+
+                        <label class="pu-checkout__method payment-method">
+                            <input type="radio" name="payment" value="googlepay">
+                            <span class="pu-checkout__method-icon payment-method-icon" aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
+                            <div class="payment-method-info">
+                                <div class="pu-checkout__method-name payment-method-name">Google Pay</div>
+                                <div class="pu-checkout__method-desc payment-method-desc" data-i18n="pay.googleDesc">Rychlá platba přes Google</div>
+                            </div>
+                        </label>
+
+                        <label class="pu-checkout__method payment-method">
+                            <input type="radio" name="payment" value="applepay">
+                            <span class="pu-checkout__method-icon payment-method-icon" aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A3.78 3.78 0 0 0 18.22 6c-2.16 0-3.16 1.14-4.72 1.14C11.9 7.14 10.68 6 8.94 6A3.9 3.9 0 0 0 5 10.06C5 14.78 8 22 11 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 3"/></svg></span>
+                            <div class="payment-method-info">
+                                <div class="pu-checkout__method-name payment-method-name">Apple Pay</div>
+                                <div class="pu-checkout__method-desc payment-method-desc" data-i18n="pay.appleDesc">Rychlá platba přes Apple</div>
+                            </div>
+                        </label>
+
+                        <label class="pu-checkout__method payment-method">
+                            <input type="radio" name="payment" value="bank">
+                            <span class="pu-checkout__method-icon payment-method-icon" aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 10v8h14v-8"/><path d="M3 18h18"/><path d="M9 14v4M15 14v4"/></svg></span>
+                            <div class="payment-method-info">
+                                <div class="pu-checkout__method-name payment-method-name" data-i18n="pay.bank">Bankovní převod</div>
+                                <div class="pu-checkout__method-desc payment-method-desc">Česká spořitelna, Komerční banka</div>
+                            </div>
+                        </label>
                     </div>
-                    <div class="order-row">
-                        <span class="order-label">Период</span>
-                        <span class="order-value" id="plan-period">30 дней</span>
-                    </div>
-                    <div class="order-row">
-                        <span class="order-label">Экономия</span>
-                        <span class="order-value" id="plan-savings">0 Kč</span>
-                    </div>
-                    <div class="order-total">
-                        <span class="order-label">Итого к оплате</span>
-                        <span class="order-value" id="plan-price">0 Kč</span>
-                    </div>
-                </div>
 
-                <div class="security-badge">
-                    <span aria-hidden="true">🔒</span>
-                    <span>Безопасная оплата через зашифрованное соединение</span>
-                </div>
-            </div>
-
-            <!-- Payment Form -->
-            <div class="checkout-card">
-                <h2 class="checkout-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Способ оплаты</h2>
-
-                <div class="payment-methods">
-                    <label class="payment-method selected">
-                        <input type="radio" name="payment" value="card" checked>
-                        <span class="payment-method-icon">💳</span>
-                        <div class="payment-method-info">
-                            <div class="payment-method-name">Банковская карта</div>
-                            <div class="payment-method-desc">Visa, Mastercard, Maestro</div>
-                        </div>
-                    </label>
-
-                    <label class="payment-method">
-                        <input type="radio" name="payment" value="googlepay">
-                        <span class="payment-method-icon">📱</span>
-                        <div class="payment-method-info">
-                            <div class="payment-method-name">Google Pay</div>
-                            <div class="payment-method-desc">Быстрая оплата через Google</div>
-                        </div>
-                    </label>
-
-                    <label class="payment-method">
-                        <input type="radio" name="payment" value="applepay">
-                        <span class="payment-method-icon">🍎</span>
-                        <div class="payment-method-info">
-                            <div class="payment-method-name">Apple Pay</div>
-                            <div class="payment-method-desc">Быстрая оплата через Apple</div>
-                        </div>
-                    </label>
-
-                    <label class="payment-method">
-                        <input type="radio" name="payment" value="bank">
-                        <span class="payment-method-icon">🏦</span>
-                        <div class="payment-method-info">
-                            <div class="payment-method-name">Банковский перевод</div>
-                            <div class="payment-method-desc">Česká spořitelna, Komerční banka</div>
-                        </div>
-                    </label>
-                </div>
-
-                <form id="payment-form" onsubmit="handlePayment(event)">
-                    <!-- Card Fields -->
-                    <div id="card-fields">
-                        <div class="form-group">
-                            <label class="form-label" for="card-number">Номер карты</label>
-                            <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label" for="card-name">Владелец карты</label>
-                            <input type="text" id="card-name" class="form-input" placeholder="IVAN IVANOV">
-                        </div>
-
-                        <div class="form-row">
+                    <form id="payment-form" onsubmit="handlePayment(event)">
+                        <div id="card-fields">
                             <div class="form-group">
-                                <label class="form-label" for="card-expiry">Срок действия</label>
-                                <input type="text" id="card-expiry" class="form-input" placeholder="MM/YY" maxlength="5">
+                                <label class="form-label" for="card-number" data-i18n="pay.cardNumber">Číslo karty</label>
+                                <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
                             </div>
+
                             <div class="form-group">
-                                <label class="form-label" for="card-cvv">CVV</label>
-                                <input type="text" id="card-cvv" class="form-input" placeholder="123" maxlength="3">
+                                <label class="form-label" for="card-name" data-i18n="pay.cardHolder">Majitel karty</label>
+                                <input type="text" id="card-name" class="form-input" placeholder="JAN NOVÁK">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="card-expiry" data-i18n="pay.cardExpiry">Platnost</label>
+                                    <input type="text" id="card-expiry" class="form-input" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="card-cvv">CVV</label>
+                                    <input type="text" id="card-cvv" class="form-input" placeholder="123" maxlength="3">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Bank Transfer Info -->
-                    <div id="bank-fields" style="display: none;">
-                        <div class="order-summary" style="background: rgba(59, 130, 246, 0.05);">
-                            <div class="order-row">
-                                <span class="order-label">🏦 Банк получателя</span>
-                                <span class="order-value">Česká spořitelna</span>
+                        <div id="bank-fields" style="display: none;">
+                            <div class="pu-checkout__summary order-summary">
+                                <div class="pu-checkout__row order-row">
+                                    <span class="pu-checkout__label order-label" data-i18n="pay.bankName">Banka příjemce</span>
+                                    <span class="pu-checkout__value order-value">Česká spořitelna</span>
+                                </div>
+                                <div class="pu-checkout__row order-row">
+                                    <span class="pu-checkout__label order-label" data-i18n="pay.account">Číslo účtu</span>
+                                    <span class="pu-checkout__value order-value">123456789/0100</span>
+                                </div>
+                                <div class="pu-checkout__row order-row">
+                                    <span class="pu-checkout__label order-label">SWIFT</span>
+                                    <span class="pu-checkout__value order-value">GIBACZPX</span>
+                                </div>
+                                <div class="pu-checkout__row order-row">
+                                    <span class="pu-checkout__label order-label" data-i18n="pay.purpose">Účel</span>
+                                    <span class="pu-checkout__value order-value">PlantUp Subscription</span>
+                                </div>
+                                <div class="pu-checkout__total order-total">
+                                    <span class="pu-checkout__label order-label" data-i18n="pay.amount">Částka</span>
+                                    <span class="pu-checkout__value order-value" id="bank-amount">0 Kč</span>
+                                </div>
+                                <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-on-light-muted);" data-i18n="pay.bankHint">
+                                    Po potvrzení obdržíte platební instrukce e-mailem
+                                </p>
                             </div>
-                            <div class="order-row">
-                                <span class="order-label">📋 Номер счёта</span>
-                                <span class="order-value">123456789/0100</span>
-                            </div>
-                            <div class="order-row">
-                                <span class="order-label">💳 SWIFT</span>
-                                <span class="order-value">GIBACZPX</span>
-                            </div>
-                            <div class="order-row">
-                                <span class="order-label">📝 Назначение</span>
-                                <span class="order-value">PlantUp Subscription</span>
-                            </div>
-                            <div class="order-total">
-                                <span class="order-label">Сумма</span>
-                                <span class="order-value" id="bank-amount">0 Kč</span>
-                            </div>
-                            <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
-                                💡 После нажатия кнопки "Подтвердить" вы получите инструкцию для оплаты на email
-                            </p>
                         </div>
-                    </div>
 
-                    <!-- Digital Wallet Info -->
-                    <div id="wallet-fields" style="display: none;">
-                        <div class="order-summary" style="background: rgba(132, 169, 60, 0.05);">
-                            <p style="font-size: 0.9375rem; color: #6b7280; margin-bottom: 1rem;">
-                                📱 Оплата через <span id="wallet-name">Digital Wallet</span> будет обработана безопасно
-                            </p>
-                            <ul style="font-size: 0.875rem; color: #6b7280; line-height: 1.8;">
-                                <li>✓ Быстрая оплата в один клик</li>
-                                <li>✓ Не нужно вводить данные карты</li>
-                                <li>✓ Защищено биометрией</li>
-                            </ul>
+                        <div id="wallet-fields" style="display: none;">
+                            <div class="pu-checkout__summary order-summary">
+                                <p style="font-size: 0.9375rem; color: var(--text-on-light-muted); margin-bottom: 1rem;">
+                                    <span data-i18n="pay.walletLead">Platba přes</span> <span id="wallet-name">Digital Wallet</span> <span data-i18n="pay.walletLead2">proběhne bezpečně</span>
+                                </p>
+                                <ul style="font-size: 0.875rem; color: var(--text-on-light-muted); line-height: 1.8;">
+                                    <li data-i18n="pay.wallet1">✓ Rychlá platba na jedno kliknutí</li>
+                                    <li data-i18n="pay.wallet2">✓ Bez zadávání údajů karty</li>
+                                    <li data-i18n="pay.wallet3">✓ Ochrana biometrií</li>
+                                </ul>
+                            </div>
                         </div>
+
+                        <button type="submit" class="pu-checkout__pay btn-pay">
+                            <span aria-hidden="true"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                            <span id="btn-text"><span data-i18n="pay.payCta">Zaplatit předplatné</span> · <span id="btn-price">0 Kč</span></span>
+                        </button>
+                        <p style="margin-top: 0.75rem; text-align: center; font-size: 0.8rem; color: var(--text-on-light-muted);" data-i18n="pay.legal">
+                            Kliknutím přejdete k úhradě zvoleného plánu PlantUp
+                        </p>
+                    </form>
+
+                    <div class="pu-checkout__footer-links">
+                        <a href="member-dashboard.html" data-i18n="pay.backDashboard">← Zpět do kabinetu</a>
+                        <span class="pu-checkout__footer-sep">·</span>
+                        <a href="index.html#membership" data-i18n="pay.changePlan">Změnit plán</a>
                     </div>
-
-                    <button type="submit" class="btn-pay">
-                        <span aria-hidden="true">🔒</span>
-                        <span id="btn-text">Оплатить <span id="btn-price">0 Kč</span></span>
-                    </button>
-                </form>
-
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="member-dashboard.html" style="color: #6b7280; font-size: 0.875rem; text-decoration: none;">← Вернуться в кабинет</a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>

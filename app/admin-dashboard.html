@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="cs" data-i18n-title-key="admin.title">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Админ Панель — PlantUp</title>
-  <script type="module" crossorigin src="./assets/admin-BF2o8abg.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/styles-DX17wzzM.js">
-  <link rel="modulepreload" crossorigin href="./assets/auth-CQpDYLA_.js">
-  <link rel="stylesheet" crossorigin href="./assets/styles-BjIe6zCh.css">
-  <link rel="stylesheet" crossorigin href="./assets/tokens-Dgz6gFMb.css">
-  <link rel="stylesheet" crossorigin href="./assets/app-shell-DUJ8vege.css">
-  <link rel="stylesheet" crossorigin href="./assets/dashboard-arva-Bq4_xBjb.css">
+    <title>Administrace — PlantUp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/admin-BVlO4_qo.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/i18n-DBMcqbrP.js">
+  <link rel="modulepreload" crossorigin href="./assets/auth-BQFZTqTF.js">
+  <link rel="modulepreload" crossorigin href="./assets/icons-DrlJFkwI.js">
+  <link rel="modulepreload" crossorigin href="./assets/loadingStates-C7Iu2bq4.js">
+  <link rel="modulepreload" crossorigin href="./assets/toast-CPO50Uqk.js">
+  <link rel="stylesheet" crossorigin href="./assets/i18n-B8sHwuui.css">
+  <link rel="stylesheet" crossorigin href="./assets/tokens-Bw27OvtD.css">
+  <link rel="stylesheet" crossorigin href="./assets/app-shell-CQd6i35n.css">
+  <link rel="stylesheet" crossorigin href="./assets/dashboard-arva-DfXGKoMJ.css">
 </head>
 <body class="pu-shell">
-    <header class="pu-nav" role="navigation" aria-label="Основная навигация">
+    <header class="pu-nav" role="navigation" data-i18n-aria="admin.navLabel">
         <div class="pu-nav__inner">
             <a href="index.html" class="pu-nav__logo">
                 <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -22,9 +29,9 @@
                 </svg>
                 <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
             </a>
-            <span class="pu-nav__user" id="admin-user-name">Админ</span>
+            <span class="pu-nav__user" id="admin-user-name" data-i18n="admin.adminLabel">Admin</span>
             <div class="pu-nav__actions">
-                <button type="button" onclick="logout()" class="pu-btn pu-btn--ghost" aria-label="Выйти">Выйти</button>
+                <button type="button" onclick="logout()" class="pu-btn pu-btn--ghost" data-i18n="admin.logOut" data-i18n-aria="admin.logOut">Odhlásit se</button>
             </div>
         </div>
     </header>
@@ -32,52 +39,56 @@
     <!-- Admin Dashboard -->
     <div class="admin-dashboard">
         <!-- Sidebar -->
-        <aside class="admin-sidebar">
-            <div class="flex items-center gap-3 mb-6 pb-6 border-b border-gray-100">
-                <div class="user-avatar" id="admin-avatar">👨‍💼</div>
+        <aside class="admin-sidebar" tabindex="0">
+            <div class="flex items-center gap-3 mb-6 pb-6 border-b" style="border-color: var(--color-moss);">
+                <div class="user-avatar" id="admin-avatar"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
                 <div>
-                    <div class="font-semibold text-sm" id="sidebar-admin-name">Админ</div>
-                    <div class="text-xs text-gray-500">admin@biomarket.cz</div>
+                    <div class="font-semibold text-sm" id="sidebar-admin-name" data-i18n="admin.adminLabel">Admin</div>
+                    <div class="text-xs" style="color: var(--text-on-light-muted);">admin@plantup.cz</div>
                 </div>
             </div>
 
-            <nav>
-                <div class="admin-nav-item active" onclick="showSection('overview')" data-section="overview">
-                    <span class="admin-nav-icon">📊</span>
-                    <span>Обзор</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('users')" data-section="users">
-                    <span class="admin-nav-icon">👥</span>
-                    <span>Пользователи</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('farms')" data-section="farms">
-                    <span class="admin-nav-icon">🏡</span>
-                    <span>Фермы</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('products')" data-section="products">
-                    <span class="admin-nav-icon">🛒</span>
-                    <span>Товары</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('orders')" data-section="orders">
-                    <span class="admin-nav-icon">📦</span>
-                    <span>Заказы</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('reviews')" data-section="reviews">
-                    <span class="admin-nav-icon">⭐</span>
-                    <span>Отзывы</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('settings')" data-section="settings">
-                    <span class="admin-nav-icon">⚙️</span>
-                    <span>Настройки платформы</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('analytics')" data-section="analytics">
-                    <span class="admin-nav-icon">📈</span>
-                    <span>Аналитика</span>
-                </div>
-                <div class="admin-nav-item" onclick="showSection('logs')" data-section="logs">
-                    <span class="admin-nav-icon">📋</span>
-                    <span>Логи</span>
-                </div>
+            <nav aria-label="Administrace">
+                <button type="button" class="admin-nav-item active" onclick="showSection('overview')" data-section="overview">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14v4M12 10v8M17 6v12"/></svg></span>
+                    <span>Přehled</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('users')" data-section="users">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    <span>Uživatelé</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('farms')" data-section="farms">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                    <span>Farmy</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('products')" data-section="products">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span>
+                    <span>Produkty</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('orders')" data-section="orders">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+                    <span>Objednávky</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('payouts')" data-section="payouts">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+                    <span>Výplaty</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('reviews')" data-section="reviews">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+                    <span>Recenze</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('settings')" data-section="settings">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></span>
+                    <span>Nastavení platformy</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('analytics')" data-section="analytics">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14v4M12 10v8M17 6v12"/></svg></span>
+                    <span>Analytika</span>
+                </button>
+                <button type="button" class="admin-nav-item" onclick="showSection('logs')" data-section="logs">
+                    <span class="admin-nav-icon"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span>
+                    <span>Logy</span>
+                </button>
             </nav>
         </aside>
 
@@ -85,30 +96,34 @@
         <main class="admin-content">
             <!-- Overview Section -->
             <section id="overview" class="admin-section active">
+                <div class="admin-section-header">
+                    <h1 class="admin-section-title" data-i18n="admin.overviewTitle">Přehled platformy</h1>
+                    <p class="admin-section-subtitle" data-i18n="admin.overviewSub">Klíčové metriky PlantUp</p>
+                </div>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon green">💰</div>
-                        <div class="stat-label">Доход за месяц</div>
+                        <div class="stat-icon green"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></div>
+                        <div class="stat-label" data-i18n="admin.revenueMonth">Příjem za měsíc</div>
                         <div class="stat-value" id="stat-revenue">0 Kč</div>
-                        <div class="stat-change positive">↑ 12% к прошлому месяцу</div>
+                        <div class="stat-change" id="stat-revenue-sub" style="color:var(--text-on-light-muted);" data-i18n="admin.revenueSub">Provize z uhrazených objednávek</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon blue">👥</div>
-                        <div class="stat-label">Всего пользователей</div>
+                        <div class="stat-icon blue"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <div class="stat-label" data-i18n="admin.totalUsers">Celkem uživatelů</div>
                         <div class="stat-value" id="stat-users">0</div>
-                        <div class="stat-change positive">↑ 5 новых сегодня</div>
+                        <div class="stat-change" id="stat-users-sub" style="color:var(--text-on-light-muted);">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon purple">🏡</div>
-                        <div class="stat-label">Активных ферм</div>
+                        <div class="stat-icon purple"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                        <div class="stat-label" data-i18n="admin.activeFarms">Aktivních farem</div>
                         <div class="stat-value" id="stat-farms">0</div>
-                        <div class="stat-change positive">↑ 2 на этой неделе</div>
+                        <div class="stat-change" id="stat-farms-sub" style="color:var(--text-on-light-muted);">—</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon orange">🛒</div>
-                        <div class="stat-label">Товаров в каталоге</div>
+                        <div class="stat-icon orange"><svg class="pu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+                        <div class="stat-label" data-i18n="admin.catalogProducts">Produktů v katalogu</div>
                         <div class="stat-value" id="stat-products">0</div>
-                        <div class="stat-change positive">↑ 15 новых сегодня</div>
+                        <div class="stat-change" id="stat-products-sub" style="color:var(--text-on-light-muted);">—</div>
                     </div>
                 </div>
 
@@ -143,9 +158,13 @@
             <!-- Users Section -->
             <section id="users" class="admin-section">
                 <div class="content-card">
-                    <div class="card-header">
+                    <div class="card-header" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between;">
                         <h2 class="card-title"><span aria-hidden="true">👥</span> Все пользователи</h2>
-                        <input type="text" placeholder="Поиск пользователей..." class="form-input form-input--narrow" id="user-search">
+                        <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                            <label class="sr-only" for="user-search">Hledat uživatele</label>
+                            <input type="text" placeholder="Hledat uživatele..." class="form-input form-input--narrow" id="user-search">
+                            <button type="button" class="btn-primary" id="btn-create-user" onclick="createUser()">+ Создать</button>
+                        </div>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -167,9 +186,13 @@
             <!-- Farms Section -->
             <section id="farms" class="admin-section">
                 <div class="content-card">
-                    <div class="card-header">
+                    <div class="card-header" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between;">
                         <h2 class="card-title"><span aria-hidden="true">🏡</span> Все фермы</h2>
-                        <input type="text" placeholder="Поиск ферм..." class="form-input form-input--narrow" id="farm-search">
+                        <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                            <label class="sr-only" for="farm-search">Hledat farmy</label>
+                            <input type="text" placeholder="Hledat farmy..." class="form-input form-input--narrow" id="farm-search">
+                            <button type="button" class="btn-primary" id="btn-create-farm" onclick="createFarm()">+ Создать</button>
+                        </div>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -191,9 +214,13 @@
             <!-- Products Section -->
             <section id="products" class="admin-section">
                 <div class="content-card">
-                    <div class="card-header">
+                    <div class="card-header" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between;">
                         <h2 class="card-title"><span aria-hidden="true">🛒</span> Модерация товаров</h2>
-                        <input type="text" placeholder="Поиск товаров..." class="form-input form-input--narrow" id="product-search">
+                        <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                            <label class="sr-only" for="product-search">Hledat produkty</label>
+                            <input type="text" placeholder="Hledat produkty..." class="form-input form-input--narrow" id="product-search">
+                            <button type="button" class="btn-primary" id="btn-create-product" onclick="createProduct()">+ Создать</button>
+                        </div>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -216,8 +243,9 @@
             <!-- Orders Section -->
             <section id="orders" class="admin-section">
                 <div class="content-card">
-                    <div class="card-header">
+                    <div class="card-header" style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:space-between;">
                         <h2 class="card-title"><span aria-hidden="true">📦</span> Все заказы</h2>
+                        <button type="button" class="btn-primary" id="btn-create-order" onclick="createOrder()">+ Создать</button>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -237,6 +265,23 @@
                 </div>
             </section>
 
+            <!-- Payouts Section -->
+            <section id="payouts" class="admin-section">
+                <div class="admin-section-header">
+                    <h1 class="admin-section-title" data-i18n="admin.payoutsTitle">Výplaty farmářům</h1>
+                    <p class="admin-section-subtitle" data-i18n="admin.payoutsSub">Žádosti o převod — schválit nebo odmítnout</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-header" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+                        <h2 class="card-title">Заявки</h2>
+                        <button type="button" class="btn-secondary" onclick="loadPayouts()">Обновить</button>
+                    </div>
+                    <div id="payouts-list">
+                        <!-- Загружается через JS -->
+                    </div>
+                </div>
+            </section>
+
             <!-- Reviews Section -->
             <section id="reviews" class="admin-section">
                 <div class="content-card">
@@ -252,8 +297,8 @@
             <!-- Platform Settings Section -->
             <section id="settings" class="admin-section">
                 <div class="admin-section-header">
-                    <h1 class="admin-section-title">Настройки платформы</h1>
-                    <p class="admin-section-subtitle">Управление комиссиями и наценками</p>
+                    <h1 class="admin-section-title" data-i18n="admin.settingsTitle">Nastavení platformy</h1>
+                    <p class="admin-section-subtitle" data-i18n="admin.settingsSub">Správa provizí a přirážek</p>
                 </div>
 
                 <div class="content-card">
@@ -324,8 +369,9 @@
                 <h2 id="admin-edit-title" class="card-title">Редактирование</h2>
                 <button id="admin-edit-close" type="button" class="btn-action" aria-label="Закрыть">✕</button>
             </div>
-            <form id="admin-edit-form">
+            <form id="admin-edit-form" novalidate>
                 <div id="admin-edit-fields"></div>
+                <div id="admin-edit-error" style="display:none;margin:0.5rem 0 0.75rem;padding:0.65rem 0.75rem;border-radius:0.5rem;background:rgba(239,68,68,0.08);color:#ef4444;font-size:0.875rem;"></div>
                 <div class="admin-modal-actions">
                     <button type="button" class="btn-action" id="admin-edit-cancel">Отмена</button>
                     <button type="submit" class="btn-primary" id="admin-edit-submit">Сохранить</button>

@@ -3,167 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Вход и регистрация — PlantUp</title>
-  <script type="module" crossorigin src="./assets/register-Ktw6TL-I.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/styles-DX17wzzM.js">
-  <link rel="stylesheet" crossorigin href="./assets/styles-BjIe6zCh.css">
-  <link rel="stylesheet" crossorigin href="./assets/tokens-Dgz6gFMb.css">
-  <link rel="stylesheet" crossorigin href="./assets/app-shell-DUJ8vege.css">
+    <title>Přihlášení a registrace — PlantUp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/register-DDAlHWkg.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/i18n-DBMcqbrP.js">
+  <link rel="modulepreload" crossorigin href="./assets/mobile-nav-DnBbmY-4.js">
+  <link rel="stylesheet" crossorigin href="./assets/i18n-B8sHwuui.css">
+  <link rel="stylesheet" crossorigin href="./assets/mobile-nav-B9stuIgv.css">
+  <link rel="stylesheet" crossorigin href="./assets/register-RE-DsRo3.css">
+  <link rel="stylesheet" crossorigin href="./assets/tokens-Bw27OvtD.css">
+  <link rel="stylesheet" crossorigin href="./assets/app-shell-CQd6i35n.css">
 </head>
-<body class="pu-shell">
+<body class="pu-shell has-arva-nav">
 
-    <header class="pu-nav" role="navigation" aria-label="Основная навигация">
-        <div class="pu-nav__inner">
-            <a href="index.html" class="pu-nav__logo">
-                <svg class="pu-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
-                    <path d="M12 26 L16 6 L26 26 Z" fill="#07503f"/>
-                </svg>
-                <span class="pu-nav__logo-text"><span class="pu-brand__cap">P</span>lant<span class="pu-brand__cap">U</span>p</span>
-            </a>
-            <nav class="pu-nav__links" aria-label="Разделы">
-                <a href="index.html#membership" class="pu-nav__link">Клуб</a>
-                <a href="index.html#farmers" class="pu-nav__link">Фермеры</a>
-                <a href="index.html#marketplace" class="pu-nav__link">Витрина</a>
+    <header class="arva-nav arva-nav--scrolled" role="navigation" data-i18n-aria="nav.mainNav">
+        <div class="arva-nav__inner">
+            <nav class="arva-nav__left" data-i18n-aria="nav.sections">
+                <a href="register.html?role=farmer" class="arva-nav__link" data-farmer-entry data-i18n="nav.forFarmers">Pro farmáře</a>
+                <a href="index.html#membership" class="arva-nav__link" data-i18n="nav.forClients">Pro odběratele</a>
+                <a href="index.html#farmers" class="arva-nav__link" data-i18n="nav.forPartners">Pro partnery</a>
+                <a href="index.html#how-it-works" class="arva-nav__link" data-i18n="nav.ourServices">Naše služby</a>
             </nav>
-            <div class="pu-nav__actions">
-                <a href="index.html" class="pu-btn pu-btn--ghost">← На главную</a>
+
+            <a href="index.html" class="arva-nav__logo" data-i18n-aria="nav.home">
+                <svg class="arva-nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <path d="M6 26 L16 6 L22 26 Z" fill="#e8fe85"/>
+                    <path d="M12 26 L16 6 L26 26 Z" fill="#ffffff"/>
+                </svg>
+                <span class="arva-nav__logo-text" aria-hidden="true"><span class="arva-brand__cap">P</span>lant<span class="arva-brand__cap">U</span>p</span>
+            </a>
+
+            <div class="arva-nav__right">
+                <a href="index.html#about" class="arva-nav__link arva-nav__link--right" data-i18n="nav.aboutUs">O nás</a>
+                <a href="index.html#marketplace" class="arva-nav__link arva-nav__link--right" data-i18n="nav.resources">Zdroje</a>
+                <a href="index.html" class="arva-btn-touch" data-i18n="nav.toHome">Domů</a>
+                <div class="arva-lang-wrap">
+                    <button type="button" class="arva-lang" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-dropdown-register">
+                        <span class="arva-lang__flag" data-lang-flag aria-hidden="true">🇨🇿</span>
+                        <span class="arva-lang__code" data-lang-code>CS</span>
+                        <svg class="arva-lang__chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.2"/></svg>
+                    </button>
+                    <div id="lang-dropdown-register" class="arva-lang-dropdown" data-lang-dropdown hidden role="listbox">
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="cs" role="option">🇨🇿 Čeština</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="ru" role="option">🇷🇺 Русский</button>
+                        <button type="button" class="arva-lang-dropdown__option" data-lang-option="en" role="option">🇬🇧 English</button>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="arva-nav__menu-btn" data-i18n-aria="nav.openMenu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="arva-menu-icon" aria-hidden="true">
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                        <span class="arva-menu-icon__line"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </header>
 
-    <div class="pu-auth-page">
-        <aside class="pu-auth-aside" aria-hidden="true">
-            <div class="pu-auth-aside__content">
-                <p class="pu-auth-aside__eyebrow">PlantUp Club</p>
-                <h2 class="pu-auth-aside__title">Свежие продукты прямо от фермеров</h2>
-                <p class="pu-auth-aside__lead">Присоединяйтесь к клубу — доставка по Праге каждую пятницу, без посредников и лишнего пластика.</p>
-                <ul class="pu-auth-aside__list">
-                    <li>
-                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
-                        <span>До 40% экономии на сезонные овощи</span>
-                    </li>
-                    <li>
-                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
-                        <span>10% прибыли — на посадку деревьев</span>
-                    </li>
-                    <li>
-                        <span class="pu-auth-aside__check" aria-hidden="true">✓</span>
-                        <span>Holešovice · Žižkov · Dejvice</span>
-                    </li>
-                </ul>
+    <div id="mobile-menu-backdrop" class="arva-mobile-drawer__backdrop" hidden aria-hidden="true"></div>
+    <aside id="mobile-menu" class="arva-mobile-drawer" role="dialog" data-i18n-aria="nav.openMenu" aria-modal="true" hidden>
+        <div class="arva-mobile-drawer__header">
+            <p class="arva-mobile-drawer__title" data-i18n="nav.menuTitle">Menu</p>
+            <button type="button" class="arva-mobile-drawer__close" data-mobile-nav-close data-i18n-aria="nav.closeMenu">
+                <span class="arva-menu-icon is-active" aria-hidden="true">
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                    <span class="arva-menu-icon__line"></span>
+                </span>
+            </button>
+        </div>
+        <nav class="arva-mobile-drawer__nav" data-i18n-aria="nav.sections">
+            <a href="register.html?role=farmer" class="arva-mobile-drawer__link mobile-nav-link" data-farmer-entry data-i18n="nav.forFarmers">Pro farmáře</a>
+            <a href="index.html#membership" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.forClients">Pro odběratele</a>
+            <a href="index.html#farmers" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.forPartners">Pro partnery</a>
+            <a href="index.html#how-it-works" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.ourServices">Naše služby</a>
+            <a href="index.html#about" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.aboutUs">O nás</a>
+            <a href="index.html#marketplace" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.resources">Zdroje</a>
+            <a href="index.html" class="arva-mobile-drawer__link mobile-nav-link" data-i18n="nav.toHome">Domů</a>
+        </nav>
+        <div class="arva-mobile-drawer__footer">
+            <p class="arva-mobile-drawer__lang-label" data-i18n="nav.language">Jazyk</p>
+            <div class="arva-lang-group" data-lang-group role="radiogroup" data-i18n-aria="nav.language">
+                <button type="button" class="arva-lang-group__btn" data-lang-option="cs" role="radio" aria-checked="true">🇨🇿 CS</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="ru" role="radio" aria-checked="false">🇷🇺 RU</button>
+                <button type="button" class="arva-lang-group__btn" data-lang-option="en" role="radio" aria-checked="false">🇬🇧 EN</button>
             </div>
-        </aside>
+        </div>
+    </aside>
 
-        <main class="pu-auth-main">
-            <div class="pu-auth-card">
-                <header class="pu-auth-card__header">
-                    <h1 class="pu-auth-card__title">С возвращением!</h1>
-                    <p class="pu-auth-card__subtitle">Войдите или зарегистрируйтесь для продолжения</p>
-                </header>
-
-                <div class="pu-auth-tabs auth-tabs" role="tablist" aria-label="Выберите вашу роль" data-active="buyer">
-                    <button type="button" class="auth-tab active" onclick="switchRole('buyer')" role="tab" aria-selected="true" id="tab-buyer">
-                        <span class="auth-tab__label">Участник</span>
-                    </button>
-                    <button type="button" class="auth-tab" onclick="switchRole('farmer')" role="tab" aria-selected="false" id="tab-farmer">
-                        <span class="auth-tab__label">Фермер</span>
-                    </button>
+    <main class="arva-auth-page">
+        <div class="arva-auth-page__inner">
+            <aside class="arva-auth-panel" aria-hidden="true">
+                <div class="arva-auth-panel__content">
+                    <p class="arva-auth-panel__eyebrow" data-i18n="auth.eyebrow">PlantUp B2B</p>
+                    <h2 class="arva-auth-panel__title" data-i18n="auth.panelTitle">Farmáři a odběratelé bez prostředníků</h2>
+                    <p class="arva-auth-panel__lead" data-i18n="auth.panelLead">Předplatné odemyká výhodné farmářské ceny — katalog vidíte vždy, členské ceny až po aktivaci plánu.</p>
+                    <ul class="arva-auth-panel__list">
+                        <li><span class="arva-auth-panel__dot" aria-hidden="true"></span><span data-i18n="auth.bullet1">Výhodné B2B ceny s aktivním předplatným</span></li>
+                        <li><span class="arva-auth-panel__dot" aria-hidden="true"></span><span data-i18n="auth.bullet2">Přímé dodávky od českých farmářů</span></li>
+                        <li><span class="arva-auth-panel__dot" aria-hidden="true"></span><span data-i18n="auth.bullet3">Doručení po Praze každý pátek</span></li>
+                    </ul>
                 </div>
+            </aside>
 
-                <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label for="login-email" class="form-label">Email</label>
-                        <input type="email" id="login-email" class="form-input" placeholder="ivan@example.com" autocomplete="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password" class="form-label">Пароль</label>
-                        <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="remember-me">
-                        <label for="remember-me">Запомнить меня</label>
-                    </div>
-                    <button type="submit" class="btn-submit">Войти</button>
-                    <div class="auth-divider"><span>или</span></div>
-                    <div class="auth-footer">
-                        <p>Нет аккаунта? <a href="#" onclick="switchToRegister(); return false;">Зарегистрироваться</a></p>
-                    </div>
-                </form>
+            <div class="arva-auth-form">
+                <div class="arva-auth-card">
+                    <h1 class="arva-auth-card__title" data-i18n="auth.title">Vítejte zpět</h1>
+                    <p class="arva-auth-card__lead" data-i18n="auth.lead">Přihlaste se jako odběratel nebo farmář. Po registraci aktivujte předplatné pro výhodné ceny.</p>
 
-                <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
-                    <div class="form-group">
-                        <label for="register-name" class="form-label">ФИО</label>
-                        <input type="text" id="register-name" class="form-input" placeholder="Иванов Иван Иванович" autocomplete="name" required>
+                    <div class="auth-tabs" role="tablist" data-i18n-aria="auth.roleLabel" data-active="buyer">
+                        <button type="button" class="auth-tab active" onclick="switchRole('buyer')" role="tab" aria-selected="true" id="tab-buyer">
+                            <span class="auth-tab__label" data-i18n="auth.buyer">Odběratel</span>
+                        </button>
+                        <button type="button" class="auth-tab" onclick="switchRole('farmer')" role="tab" aria-selected="false" id="tab-farmer">
+                            <span class="auth-tab__label" data-i18n="auth.farmer">Farmář</span>
+                        </button>
                     </div>
-                    <div class="form-row">
+
+                    <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+                        <div class="arva-social-auth" role="group" data-i18n-aria="auth.socialLabel">
+                            <button type="button" class="arva-social-btn arva-social-btn--google" data-social-auth="google">
+                                <svg class="arva-social-btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-.9 2.2-1.9 2.9l3.1 2.4c1.8-1.7 2.9-4.1 2.9-7 0-.7-.1-1.3-.2-1.9H12z"/><path fill="#34A853" d="M5.3 14.3l-.8.6-2.5 1.9C3.5 19.5 7.4 22 12 22c2.7 0 5-.9 6.7-2.4l-3.1-2.4c-.9.6-2.1 1-3.6 1-2.8 0-5.1-1.9-5.9-4.4z"/><path fill="#4A90E2" d="M2 7.2C1.4 8.4 1 9.7 1 11s.4 2.6 1 3.8l3.3-2.5c-.2-.6-.3-1.2-.3-1.3 0-.5.1-1 .3-1.5L2 7.2z"/><path fill="#FBBC05" d="M12 5.4c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 2.4 14.7 1.5 12 1.5 7.4 1.5 3.5 4 1.9 7.7l3.3 2.5C6.9 7.3 9.2 5.4 12 5.4z"/></svg>
+                                <span data-i18n="auth.continueGoogle">Pokračovat přes Google</span>
+                            </button>
+                            <button type="button" class="arva-social-btn arva-social-btn--apple" data-social-auth="apple">
+                                <svg class="arva-social-btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2 1.1 0 1.5-.7 2.8-.7s1.6.7 2.8.7c1.1 0 1.9-1 2.6-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM14.5 6.3c.6-.7 1-1.7.9-2.7-1.1 0-2.3.7-3 1.5-.6.7-1.1 1.7-.9 2.7 1 .1 2.1-.5 3-1.5z"/></svg>
+                                <span data-i18n="auth.continueApple">Pokračovat přes Apple</span>
+                            </button>
+                        </div>
+                        <div class="auth-divider"><span data-i18n="auth.orEmail">nebo emailem</span></div>
                         <div class="form-group">
-                            <label for="register-email" class="form-label">Email</label>
-                            <input type="email" id="register-email" class="form-input" placeholder="ivan@example.com" autocomplete="email" required>
+                            <label for="login-email" class="form-label" data-i18n="auth.email">Email</label>
+                            <input type="email" id="login-email" class="form-input" placeholder="jan@firma.cz" autocomplete="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="register-phone" class="form-label">Телефон</label>
-                            <input type="tel" id="register-phone" class="form-input" placeholder="+420 XXX XXX XXX" autocomplete="tel" required>
+                            <label for="login-password" class="form-label" data-i18n="auth.password">Heslo</label>
+                            <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" required>
                         </div>
-                    </div>
-                    <div class="form-group" id="farm-name-group" hidden>
-                        <label for="register-farm" class="form-label">Название фермы</label>
-                        <input type="text" id="register-farm" class="form-input" placeholder="Ваша ферма">
-                    </div>
-                    <div class="form-group">
-                        <label for="register-password" class="form-label">Пароль</label>
-                        <input type="password" id="register-password" class="form-input" placeholder="Минимум 8 символов" minlength="8" autocomplete="new-password" required>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree-terms" required>
-                        <label for="agree-terms">Я согласен с <a href="#">условиями использования</a></label>
-                    </div>
-                    <button type="submit" class="btn-submit">Зарегистрироваться</button>
-                    <div class="auth-divider"><span>или</span></div>
-                    <div class="auth-footer">
-                        <p>Уже есть аккаунт? <a href="#" onclick="switchToLogin(); return false;">Войти</a></p>
-                    </div>
-                </form>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me" data-i18n="auth.remember">Zapamatovat si mě</label>
+                        </div>
+                        <button type="submit" class="btn-submit" data-i18n="auth.login">Přihlásit se</button>
+                        <div class="auth-footer">
+                            <p><span data-i18n="auth.noAccount">Nemáte účet?</span> <a href="#" onclick="switchToRegister(); return false;" data-i18n="auth.registerLink">Registrovat se</a></p>
+                        </div>
+                    </form>
 
-                <ul class="pu-auth-trust" aria-label="Гарантии">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        Безопасно
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                        Проверено
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        Экологично
-                    </li>
-                </ul>
+                    <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+                        <div class="arva-social-auth" role="group" data-i18n-aria="auth.socialLabel">
+                            <button type="button" class="arva-social-btn arva-social-btn--google" data-social-auth="google">
+                                <svg class="arva-social-btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-.9 2.2-1.9 2.9l3.1 2.4c1.8-1.7 2.9-4.1 2.9-7 0-.7-.1-1.3-.2-1.9H12z"/><path fill="#34A853" d="M5.3 14.3l-.8.6-2.5 1.9C3.5 19.5 7.4 22 12 22c2.7 0 5-.9 6.7-2.4l-3.1-2.4c-.9.6-2.1 1-3.6 1-2.8 0-5.1-1.9-5.9-4.4z"/><path fill="#4A90E2" d="M2 7.2C1.4 8.4 1 9.7 1 11s.4 2.6 1 3.8l3.3-2.5c-.2-.6-.3-1.2-.3-1.3 0-.5.1-1 .3-1.5L2 7.2z"/><path fill="#FBBC05" d="M12 5.4c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 2.4 14.7 1.5 12 1.5 7.4 1.5 3.5 4 1.9 7.7l3.3 2.5C6.9 7.3 9.2 5.4 12 5.4z"/></svg>
+                                <span data-i18n="auth.continueGoogle">Pokračovat přes Google</span>
+                            </button>
+                            <button type="button" class="arva-social-btn arva-social-btn--apple" data-social-auth="apple">
+                                <svg class="arva-social-btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2 1.1 0 1.5-.7 2.8-.7s1.6.7 2.8.7c1.1 0 1.9-1 2.6-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.2zM14.5 6.3c.6-.7 1-1.7.9-2.7-1.1 0-2.3.7-3 1.5-.6.7-1.1 1.7-.9 2.7 1 .1 2.1-.5 3-1.5z"/></svg>
+                                <span data-i18n="auth.continueApple">Pokračovat přes Apple</span>
+                            </button>
+                        </div>
+                        <div class="auth-divider"><span data-i18n="auth.orEmail">nebo emailem</span></div>
+                        <div class="form-group">
+                            <label for="register-name" class="form-label" data-i18n="auth.fullname">Jméno a příjmení</label>
+                            <input type="text" id="register-name" class="form-input" placeholder="Jan Novák" autocomplete="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="register-email" class="form-label" data-i18n="auth.email">Email</label>
+                                <input type="email" id="register-email" class="form-input" placeholder="jan@firma.cz" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="register-phone" class="form-label" data-i18n="auth.phone">Telefon</label>
+                                <input type="tel" id="register-phone" class="form-input" placeholder="+420 XXX XXX XXX" autocomplete="tel" required>
+                            </div>
+                        </div>
+                        <div class="form-group" id="farm-name-group" hidden>
+                            <label for="register-farm" class="form-label" data-i18n="auth.farmName">Název farmy</label>
+                            <input type="text" id="register-farm" class="form-input" placeholder="Vaše farma">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password" class="form-label" data-i18n="auth.password">Heslo</label>
+                            <input type="password" id="register-password" class="form-input" placeholder="Min. 8 znaků" minlength="8" autocomplete="new-password" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="agree-terms" required>
+                            <label for="agree-terms"><span data-i18n="auth.agree">Souhlasím s</span> <a href="#" data-i18n="auth.terms">obchodními podmínkami</a></label>
+                        </div>
+                        <button type="submit" class="btn-submit" data-i18n="auth.register">Registrovat se</button>
+                        <div class="auth-footer">
+                            <p><span data-i18n="auth.hasAccount">Už máte účet?</span> <a href="#" onclick="switchToLogin(); return false;" data-i18n="auth.loginLink">Přihlásit se</a></p>
+                        </div>
+                    </form>
+
+                    <p class="arva-auth-note" data-i18n="auth.note">Členské ceny se odemknou po aktivaci předplatného.</p>
+                </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
     <script>
-        function switchToLogin() {
+        window.switchToLogin = function switchToLogin() {
             document.getElementById('login-form').classList.add('active');
             document.getElementById('register-form').classList.remove('active');
             const url = new URL(window.location);
             url.searchParams.delete('mode');
             window.history.pushState({}, '', url);
-        }
+        };
 
-        function switchToRegister() {
+        window.switchToRegister = function switchToRegister() {
             document.getElementById('login-form').classList.remove('active');
             document.getElementById('register-form').classList.add('active');
             const url = new URL(window.location);
             url.searchParams.set('mode', 'register');
             window.history.pushState({}, '', url);
-        }
+        };
 
         document.addEventListener('DOMContentLoaded', () => {
             const mode = new URLSearchParams(window.location.search).get('mode');
-            if (mode === 'register') switchToRegister();
-            else switchToLogin();
+            // register.js module handles farmer role + register mode
+            if (mode === 'register') window.switchToRegister();
+            else if (mode === 'login') window.switchToLogin();
         });
 
         window.switchRole = window.switchRole || function () {};
