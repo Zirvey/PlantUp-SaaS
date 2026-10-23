@@ -47,6 +47,15 @@ a { color: var(--forest); text-decoration: none; }
   margin-bottom: 1rem;
 }
 
+.brand .logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: block;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .brand-name {
   font-family: Fraunces, Georgia, serif;
   font-size: 1.6rem;
