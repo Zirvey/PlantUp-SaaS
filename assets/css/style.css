@@ -236,6 +236,30 @@ nav {
 
 .preview-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
 
+.preview-card--plain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  min-height: 280px;
+  padding: 2rem;
+  background: linear-gradient(160deg, #0a5c48 0%, var(--forest) 55%, #043529 100%);
+  border: none;
+}
+
+.preview-card--plain .preview-logo {
+  width: 96px;
+  height: 96px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 22px;
+}
+
+.preview-card--plain .preview-cta {
+  position: static;
+}
+
 .preview-cta {
   position: absolute;
   left: 1rem;

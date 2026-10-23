@@ -12,17 +12,6 @@ A complete product ready to launch as your own SaaS: branded marketing site, mem
 | **Product UI** | [/app/](https://zirvey.github.io/PlantUp-SaaS/app/) |
 | **Screen hub** | [/demo/](https://zirvey.github.io/PlantUp-SaaS/demo/) — landing, auth, dashboards, checkout |
 
-## Product screenshots
-
-| | |
-|:---:|:---:|
-| **Landing & marketplace** | **Auth** |
-| [![Homepage](assets/screenshots/01-homepage.png)](https://zirvey.github.io/PlantUp-SaaS/app/) | [![Register](assets/screenshots/02-register.png)](https://zirvey.github.io/PlantUp-SaaS/app/register.html) |
-| **Member dashboard** | **Farmer dashboard** |
-| [![Member](assets/screenshots/03-member-dashboard.png)](https://zirvey.github.io/PlantUp-SaaS/app/member-dashboard.html) | [![Farmer](assets/screenshots/04-farmer-dashboard.png)](https://zirvey.github.io/PlantUp-SaaS/app/farmer-dashboard.html) |
-| **Checkout** | |
-| [![Checkout](assets/screenshots/06-checkout.png)](https://zirvey.github.io/PlantUp-SaaS/app/checkout.html) | |
-
 ## Key metrics
 
 | Metric | Value |

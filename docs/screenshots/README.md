@@ -1,6 +1,6 @@
 # Screenshots
 
-Product captures for the sales kit (`assets/screenshots/`) and demo hub thumbs.
+Product captures go in `assets/screenshots/` (and optionally mirrored here).
 
 Recommended size: ~1440×900 desktop PNGs.
 
@@ -15,4 +15,4 @@ Recommended size: ~1440×900 desktop PNGs.
 hero-banner.png
 ```
 
-Refresh from the built `app/` demo before a serious pitch.
+Screenshots are temporarily removed — add fresh captures before the next pitch.
